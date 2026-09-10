@@ -16,85 +16,56 @@ nav button.active{background:var(--orange);color:#000;border-color:var(--orange)
 .kicker{color:var(--orange);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
 h1{font-size:clamp(1.9rem,4vw,3rem);line-height:.95;letter-spacing:-.03em;margin:10px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
-.card h3{font-size:.7rem;letter-spacing:.14em;color:var(--orange);text-transform:uppercase;margin-bottom:10px}
-.item{padding:12px;background:#12161c;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;line-height:1.5}
-.item b{color:var(--orange)}
-.stat{display:flex;justify-content:space-between;background:#12161c;border-radius:8px;padding:12px;margin-bottom:6px;font-size:.85rem}
+.item{padding:12px;background:#12161c;border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+iframe{width:100%;height:220px;border-radius:10px;border:1px solid var(--line)}
 </style>
 </head>
 <body>
 <header>
 <div style="font-weight:900;font-size:1.15rem">justicefornolanwells.com</div>
-<div style="color:var(--muted);font-size:.72rem;margin-top:2px">Nolan Wells — Horn Island · July 4, 2026 — Verified Case File</div>
+<div style="color:var(--muted);font-size:.72rem">Nolan Wells — Horn Island · July 4, 2026 — Auto-Hunting Evidence</div>
 <nav>
-<button class="active" data-tab="timeline">TIMELINE</button>
+<button data-tab="timeline">TIMELINE</button>
 <button data-tab="contradictions">CONTRADICTIONS</button>
 <button data-tab="discrepancies">DISCREPANCIES</button>
-<button data-tab="evidence">EVIDENCE</button>
+<button class="active" data-tab="evidence">EVIDENCE</button>
 </nav>
 </header>
-
 <div class="wrap">
-<div id="timeline" class="section active">
-<div class="kicker">JULY 3-6, 2026 · HORN ISLAND</div>
+<div id="timeline" class="section">
 <h1>What happened to Nolan Wells?</h1>
-<div class="card"><h3>CASE SUMMARY</h3><p style="color:var(--muted);font-size:.92rem">Nolan Wells traveled to Horn Island on July 4th. This file documents verified events from GPS, dispatch audio, Sea Tow calls, and official records, with contradictions and gaps flagged for review.</p></div>
-<div class="card"><h3>TIMELINE OF EVENTS — VERIFIED</h3>
-<div class="item"><b>11:14 AM July 4 — Official GPS Arrival</b><br>MI4088BU arrives shore — Horn Island west tip — Coordinate locked<br><small style="color:var(--muted)">GPS Log — Verified</small></div>
-<div class="item"><b>11:30:33 AM — Alternate Ride Request</b><br>JCSO dispatched to check mainland launches — Status: Negative contact at ramps/piers<br><small style="color:var(--muted)">Dispatch Audio — Verified</small></div>
-<div class="item"><b>4:31 PM — Vessel Movement</b><br>Vessel position change detected offshore<br><small style="color:var(--muted)">MDMR / GPS — Verified</small></div>
-<div class="item"><b>4:48 PM — Sea Tow Distress Call</b><br>Triton distress: sinking, bilge pump failure — Caller: Jerry Atkerson<br><small style="color:var(--muted)">Sea Tow Audio — Verified</small></div>
-<div class="item"><b>5:52-6:06 PM — Fort Bayou Transit</b><br>GPS shows Fort Bayou movement — Post-distress transit<br><small style="color:var(--muted)">GPS Track — Verified</small></div>
+<div class="card"><div class="item"><b>11:14 AM</b> — GPS Arrival</div><div class="item"><b>11:30 AM</b> — Alternate Ride — Negative</div><div class="item"><b>4:48 PM</b> — Sea Tow Distress</div></div>
+</div>
+<div id="contradictions" class="section"><h1>Contradictions</h1><div id="c-list" class="card">Loading...</div></div>
+<div id="discrepancies" class="section"><h1>Discrepancies</h1><div class="card"><div class="item">Chain of Custody gaps — no metadata for 1:55 PM scene</div></div></div>
+<div id="evidence" class="section active">
+<h1>Evidence Library — Auto-Pulled</h1>
+<div id="video-count" class="kicker">Loading auto-hunted videos...</div>
+<div id="video-grid"></div>
 </div>
 </div>
-
-<div id="contradictions" class="section">
-<h1>Contradictions Analysis</h1>
-<div class="card">
-<div class="item"><b>1. ALTERNATE RIDE: UNCONFIRMED</b><br>Dispatch shows request at 11:30 AM, negative at 12:21 PM. No vehicle/vessel identified. Contradicts early theory of alternate pickup.</div>
-<div class="item"><b>2. 1:55 PM SCENE TIMING</b><br>Counsel letter cites 1:55 PM for three-boat cluster. No native timestamp metadata available. Conflicts with GPS chain placing 11:14 arrival and 4:31 movement. ~2hr 41min gap unresolved.</div>
-<div class="item"><b>3. VESSEL POSITION CHANGE</b><br>Shoreline position claimed fixed until 4:00 PM per initial statement. GPS data shows movement at 4:31 PM. Discrepancy in boat cluster continuity.</div>
-</div>
-</div>
-
-<div id="discrepancies" class="section">
-<h1>Discrepancies & Data Gaps</h1>
-<div class="card"><h3>KEY DISCREPANCIES</h3>
-<div class="item">Chain of Custody: No native photo/video metadata for 1:55 PM scene</div>
-<div class="item">Registration IDs: Boats in cluster not independently verified</div>
-<div class="item">Communications: 4:48 PM Sea Tow call lacks membership number confirmation</div>
-<div class="item">Movement: 5:52-6:06 PM Fort Bayou not captured in initial shoreline account</div>
-</div>
-<div class="card"><h3>EVIDENCE GAP MATRIX</h3>
-<div class="stat"><span>11:14 AM — GPS Log</span><b style="color:#2ecc71">YES ✓</b></div>
-<div class="stat"><span>4:48 PM — Sea Tow Audio</span><b style="color:#2ecc71">YES ✓</b></div>
-<div class="stat"><span>1:55 PM — Counsel Letter</span><b style="color:#e74c3c">NO ✕</b></div>
-<div class="stat"><span>5:52 PM — GPS Track</span><b style="color:#2ecc71">YES ✓</b></div>
-</div>
-</div>
-
-<div id="evidence" class="section">
-<h1>Evidence Library</h1>
-<div class="card">
-<h3>DOCUMENTED SOURCES</h3>
-<div class="item">Officer Tatum Interviews — transcripts and analysis</div>
-<div class="item">YouTube Interviews — witness and family statements</div>
-<div class="item">News Interviews — WLOX, Sun Herald, WXXV</div>
-<div class="item">Horn Island July 4th Videos + Search Team Videos</div>
-<div class="item">MDMR / MDR Reports, Police Scanner, Dispatch Audio, Sea Tow Call</div>
-<p style="color:var(--muted);font-size:.85rem;margin-top:12px">All documents open on-site — no external redirects. Full transcripts and source links to be added.</p>
-</div>
-</div>
-</div>
-
 <script>
-document.querySelectorAll('nav button').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');window.scrollTo(0,0);
- })
-});
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');
+}));
+async function load(){
+ try{
+  const res = await fetch('forensic/evidence.json?'+Date.now());
+  const data = await res.json();
+  const vids = data.videos||[];
+  document.getElementById('video-count').textContent = vids.length + ' videos auto-found — Officer Tatum + friends + WLOX / WXXV / Horn Island';
+  const grid = document.getElementById('video-grid');
+  grid.innerHTML='';
+  vids.forEach(v=>{
+   const d=document.createElement('div');d.className='card';
+   d.innerHTML=`<h3 style="color:#ff6b2b;font-size:.8rem;margin-bottom:6px">${v.title||'Video'}</h3><p style="color:#9aa0a6;font-size:.7rem">${v.channel||''} · matched: ${v.query_match||''}</p><iframe src="https://www.youtube.com/embed/${v.id}" allowfullscreen></iframe><p style="margin-top:8px"><a href="${v.url}" target="_blank" style="color:#ff6b2b">Watch on YouTube</a></p>`;
+   grid.appendChild(d);
+  });
+ }catch(e){document.getElementById('video-count').textContent='Run hunter from Actions, then refresh. If still empty, check forensic/evidence.json';}
+}
+load();
 </script>
 </body>
 </html>
