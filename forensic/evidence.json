@@ -1,4 +1,59 @@
 {
   "videos": [],
-  "generated_at": "2026-09-10 18:38:49.015208"
+  "total": 0,
+  "generated_at": "2026-09-10 18:44:35.401416",
+  "verified": {
+    "timeline": [
+      {
+        "time": "11:14 AM July 4",
+        "event": "GPS Arrival MI4088BU Horn Island",
+        "verified": true
+      },
+      {
+        "time": "11:30 AM",
+        "event": "Alternate Ride Request \u2014 JCSO check \u2014 Negative",
+        "verified": true
+      },
+      {
+        "time": "4:31 PM",
+        "event": "Vessel Movement detected",
+        "verified": true
+      },
+      {
+        "time": "4:48 PM",
+        "event": "Sea Tow Distress \u2014 Jerry Atkerson \u2014 bilge pump failure",
+        "verified": true
+      },
+      {
+        "time": "5:52-6:06 PM",
+        "event": "Fort Bayou Transit",
+        "verified": true
+      }
+    ],
+    "contradictions": [
+      {
+        "id": 1,
+        "title": "Alternate Ride UNCONFIRMED",
+        "detail": "Dispatch 11:30 AM negative at 12:21 PM, no vehicle identified"
+      },
+      {
+        "id": 2,
+        "title": "1:55 PM Scene Timing",
+        "detail": "Counsel letter cites 1:55 PM three-boat cluster \u2014 no native timestamp metadata \u2014 conflicts with 11:14 arrival"
+      },
+      {
+        "id": 3,
+        "title": "Vessel Position Change",
+        "detail": "Claimed fixed until 4 PM \u2014 GPS shows movement 4:31 PM"
+      }
+    ],
+    "discrepancies": [
+      "Chain of Custody: No native photo/video metadata for 1:55 PM scene",
+      "Registration IDs: Boats in cluster not independently verified",
+      "Communications: 4:48 PM Sea Tow call lacks membership confirmation",
+      "Movement: Fort Bayou 5:52-6:06 not in initial shoreline account",
+      "MDMR report: Awaiting official PDF export",
+      "Scanner audio: Dispatch + Sea Tow original files needed"
+    ]
+  }
 }

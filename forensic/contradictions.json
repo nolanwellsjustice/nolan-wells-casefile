@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Alternate Ride UNCONFIRMED",
+    "detail": "Dispatch 11:30 AM negative at 12:21 PM, no vehicle identified"
+  },
+  {
+    "id": 2,
+    "title": "1:55 PM Scene Timing",
+    "detail": "Counsel letter cites 1:55 PM three-boat cluster \u2014 no native timestamp metadata \u2014 conflicts with 11:14 arrival"
+  },
+  {
+    "id": 3,
+    "title": "Vessel Position Change",
+    "detail": "Claimed fixed until 4 PM \u2014 GPS shows movement 4:31 PM"
+  }
+]
