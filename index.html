@@ -6,25 +6,25 @@
 <style>
 :root{--bg:#0a0d11;--card:#1a1f26;--text:#e8e6d9;--muted:#9aa0a6;--orange:#ff6b2b;--line:#2a323c}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
-header{position:sticky;top:0;background:#0a0d11;border-bottom:1px solid var(--line);padding:14px 18px;z-index:20}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+header{position:sticky;top:0;background:#0a0d11;border-bottom:1px solid var(--line);padding:14px 18px;z-index:10}
 nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 nav button{background:#1a1f26;border:1px solid var(--line);color:var(--muted);padding:7px 12px;border-radius:9px;font-size:.68rem;font-weight:800;letter-spacing:.11em;cursor:pointer}
 nav button.active{background:var(--orange);color:#000;border-color:var(--orange)}
 .wrap{max-width:1100px;margin:auto;padding:20px}
 .section{display:none}.section.active{display:block}
 .kicker{color:var(--orange);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
-h1{font-size:clamp(1.9rem,4vw,3rem);line-height:.95;letter-spacing:-.03em;margin:10px 0 14px}
+h1{font-size:clamp(1.9rem,4vw,3rem);line-height:.95;margin:10px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
-.item{padding:12px;background:#12161c;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;line-height:1.5;font-size:.9rem}
+.item{padding:12px;background:#12161c;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;font-size:.9rem;line-height:1.5}
 .item b{color:var(--orange)}
 iframe{width:100%;height:220px;border-radius:10px;border:1px solid var(--line)}
 </style>
 </head>
 <body>
 <header>
-<div style="font-weight:900;font-size:1.15rem">justicefornolanwells.com</div>
-<div style="color:var(--muted);font-size:.72rem">Nolan Wells — Horn Island · July 4, 2026 — Verified Case File</div>
+<div style="font-weight:900">justicefornolanwells.com</div>
+<div style="color:#9aa0a6;font-size:.72rem">Nolan Wells — Horn Island · July 4, 2026 — Reads from forensic/ files</div>
 <nav>
 <button class="active" data-tab="timeline">TIMELINE</button>
 <button data-tab="contradictions">CONTRADICTIONS</button>
@@ -32,85 +32,48 @@ iframe{width:100%;height:220px;border-radius:10px;border:1px solid var(--line)}
 <button data-tab="evidence">EVIDENCE</button>
 </nav>
 </header>
-
 <div class="wrap">
-
-<div id="timeline" class="section active">
-<div class="kicker">JULY 3-6, 2026 · HORN ISLAND</div>
-<h1>What happened to Nolan Wells?</h1>
-<div class="card"><h3>CASE SUMMARY</h3><p style="color:var(--muted)">Nolan Wells traveled to Horn Island July 4th by boat MI4088BU. Verified GPS, dispatch, Sea Tow audio show arrival 11:14 AM, vessel movement 4:31 PM, distress call 4:48 PM, Fort Bayou transit 5:52 PM. Disappearance reported ~11 PM. Body recovered July 6. This file documents verified events vs statements.</p></div>
-<div class="card"><h3>TIMELINE — VERIFIED EVENTS</h3>
-<div class="item"><b>11:14 AM July 4 — GPS Arrival — VERIFIED</b><br>MI4088BU arrives Horn Island west tip — coordinate locked — Photo shows cluster of 3 boats<br><small style="color:#9aa0a6">Source: GPS Log</small></div>
-<div class="item"><b>11:30:33 AM — Alternate Ride Request — VERIFIED</b><br>JCSO dispatched to check mainland launches for alternate pickup — 12:21 PM: Negative contact at ramps/piers<br><small style="color:#9aa0a6">Source: Dispatch Audio</small></div>
-<div class="item"><b>~3:00 PM — Last Seen Talking to Girl — Under Review</b><br>Reported last sighting window per sheriff statement<br><small style="color:#9aa0a6">Source: Sheriff statement via WXXV / CNN</small></div>
-<div class="item"><b>4:31 PM — Vessel Movement Marker — VERIFIED</b><br>Vessel position change offshore detected — conflicts with claim of fixed shoreline position until 4 PM<br><small style="color:#9aa0a6">Source: MDMR / GPS</small></div>
-<div class="item"><b>4:48 PM — Sea Tow Distress Call — VERIFIED</b><br>Triton sinking, bilge pump failure — Caller: Jerry Atkerson — Membership verification pending<br><small style="color:#9aa0a6">Source: Sea Tow Audio + MDMR release — WLOX obtained</small></div>
-<div class="item"><b>5:52-6:06 PM — Fort Bayou Transit — VERIFIED</b><br>Post-distress movement to Fort Bayou — not captured in initial shoreline account<br><small style="color:#9aa0a6">Source: GPS Track</small></div>
-<div class="item"><b>11:00 PM — Friend Reports Missing to Coast Guard — VERIFIED</b><br>Friend Warren Hudson contacts Coast Guard per Jackson County Sheriff<br><small style="color:#9aa0a6">Source: Sheriff via ABC News / CNN</small></div>
-<div class="item"><b>~Midnight July 5 — Mother Contacts Sheriff — VERIFIED</b><br>Christine Wonsley contacts JCSO<br><small style="color:#9aa0a6">Source: Sheriff statement</small></div>
-<div class="item"><b>July 6 Morning — Body Recovered — VERIFIED</b><br>Body found NW tip Horn Island — DNA via Jackson County Coroner Bruce Lynd — WLOX reports<br><small style="color:#9aa0a6">Source: WLOX / Coroner</small></div>
+<div id="timeline" class="section active"><h1>What happened to Nolan Wells?</h1><div id="timeline-list" class="card">Loading from forensic/evidence.json...</div></div>
+<div id="contradictions" class="section"><h1>Contradictions</h1><div id="contradictions-list" class="card">Loading...</div></div>
+<div id="discrepancies" class="section"><h1>Discrepancies</h1><div id="discrepancies-list" class="card">Loading...</div></div>
+<div id="evidence" class="section"><h1>Evidence Library</h1><div id="video-count" class="kicker"></div><div id="video-grid"></div></div>
 </div>
-</div>
-
-<div id="contradictions" class="section">
-<h1>Contradictions Analysis</h1>
-<div class="card">
-<div class="item"><b>1. ALTERNATE RIDE: UNCONFIRMED</b><br>Initial account: Nolan chose to stay, return with different group. Dispatch audio shows 11:30 AM request to find alternate ride at mainland launches — result: negative at 12:21 PM. No vehicle/vessel ID ever produced. Contradicts theory of pre-arranged alternate pickup. — Sources: Dispatch Audio + WLOX reporting on emergency call【2219607349900204121†L24-L28】</div>
-<div class="item"><b>2. 1:55 PM SCENE TIMING — GAP</b><br>Counsel letter cites 1:55 PM for three-boat cluster photo. No native EXIF timestamp metadata available. GPS chain shows 11:14 arrival and 4:31 movement = 2hr41min gap unresolved. Photo chain of custody questioned by investigators requesting original unedited photos【3490401251423325949†L45-L48】</div>
-<div class="item"><b>3. VESSEL POSITION CHANGE vs FIXED CLAIM</b><br>Statement: boat cluster fixed until ~4 PM. GPS shows movement at 4:31 PM offshore. Conflicts with shoreline continuity narrative. Requires MDMR log export verification.</div>
-<div class="item"><b>4. OFFICER TATUM INTERVIEWS vs FAMILY STATEMENT</b><br>Warren Hudson told Officer Tatum (Brandon Tatum) he was best friend, described boats all around island, alcohol use【6336159509217520441†L42-L46】. Family says they don't recognize Hudson as best friend and disputes characterization【6336159509217520441†L29-L33】. Multiple parts published on YouTube July 23-25【6336159509217520441†L6-L9】</div>
-</div>
-</div>
-
-<div id="discrepancies" class="section">
-<h1>Discrepancies & Data Gaps</h1>
-<div class="card"><h3>6 FLAGGED GAPS</h3>
-<div class="item"><b>Chain of Custody:</b> No native photo/video metadata for 1:55 PM scene — investigators asked for original unedited photos/videos July 4, particularly alleged altercations【3490401251423325949†L45-L48】</div>
-<div class="item"><b>Registration IDs:</b> Boats in cluster (including Triton) not independently verified — registry pending</div>
-<div class="item"><b>Communications:</b> 4:48 PM Sea Tow call — membership number not confirmed — MDMR call audio released via WLOX shows emergency call fueling speculation【2219607349900204121†L24-L27】</div>
-<div class="item"><b>Movement Gap:</b> 5:52-6:06 PM Fort Bayou transit not in initial shoreline account — requires explanation</div>
-<div class="item"><b>Interview Completeness:</b> Sheriff Ledbetter told WXXV "It's gonna take a lot of hard work" — CNN reported Jackson County Sheriff did not respond whether all friends interviewed【3490401251423325949†L5-L8】</div>
-<div class="item"><b>MDMR Report:</b> Official MDMR portal check needed — audio obtained by WLOX, full PDF pending</div>
-</div>
-</div>
-
-<div id="evidence" class="section">
-<h1>Evidence Library</h1>
-<div class="kicker">OFFICER TATUM + WLOX + WXXV + MDMR — DIRECT LINKS — NO AUTO-HUNT NEEDED</div>
-<br>
-<div class="card">
-<h3>Officer Tatum Interviews (Brandon Tatum)</h3>
-<p style="color:#9aa0a6;font-size:.8rem;margin-bottom:10px">Friend Warren Hudson interview published in several parts on YouTube July 23-25 — Hudson describes final time seeing Nolan, calling mom【6336159509217520441†L5-L9】. Family disputes friendship claim.</p>
-<div class="item"><b>Warren Hudson — Officer Tatum Interview Pt 1-3</b><br><a href="https://www.youtube.com/results?search_query=Officer+Tatum+Nolan+Wells+Warren+Hudson" target="_blank" style="color:#ff6b2b">Search Officer Tatum Nolan Wells on YouTube → Watch on YouTube (Channel: The Officer Tatum)</a><br><small>Note: YouTube blocks auto-embed search on GitHub — tap link to watch direct</small></div>
-<div class="item"><b>Tracestin Shepherd — Officer Tatum Interview July 25</b><br>Detailed close friendship and last time saw Nolan before death【6336159509217520441†L15-L19】<br><a href="https://www.youtube.com/results?search_query=Officer+Tatum+Tracestin+Shepherd+Nolan+Wells" target="_blank" style="color:#ff6b2b">Watch Tracestin Shepherd interview</a></div>
-</div>
-
-<div class="card">
-<h3>WLOX News 8 / WXXV News 25 / Sun Herald</h3>
-<div class="item"><b>WLOX — MDMR releases call audio from boat in Nolan Wells case</b><br>WLOX obtained audio from Mississippi Department of Marine Resources related to Nolan case【2383694450464455833†L79-L83】<br><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="color:#ff6b2b">This is placeholder — replace with actual WLOX video ID: MDMR audio</a><br>Actual WLOX Channel: @WLOXNewsNow — Search "MDMR releases call audio Nolan Wells"</div>
-<div class="item"><b>WLOX — Body found on Horn Island during search</b><br>Officials searching for 18-year-old Nolan Xavier Wells — body found NW tip【2383694450464455833†L56-L60】<br><a href="https://www.youtube.com/@WLOXNewsNow/search?query=Nolan%20Wells" target="_blank" style="color:#ff6b2b">All WLOX Nolan Wells videos on WLOX channel</a></div>
-<div class="item"><b>WXXV — Sheriff says "It's gonna take a lot of hard work"</b><br>Sheriff Ledbetter to WXXV affiliate — CNN timeline【3490401251423325949†L56-L60】<br><a href="https://www.youtube.com/results?search_query=WXXV+Nolan+Wells" target="_blank" style="color:#ff6b2b">WXXV Nolan Wells coverage</a></div>
-<div class="item"><b>ABC News — Sheriff speaks out amid investigation into Nolan Wells' death</b><br>Investigating claims by friend's mother that Wells stayed behind after mechanical issue【3490401251423325949†L24-L28】</div>
-</div>
-
-<div class="card">
-<h3>Horn Island July 4th + Search Team + Sea Tow Audio</h3>
-<div class="item">Sea Tow Distress 4:48 PM — Triton sinking — bilge pump failure — Requires original MDMR audio file export (WLOX obtained portion)【2219607349900204121†L24-L27】</div>
-<div class="item">Friends return to Horn Island seeking answers — CNN: friends wanted to investigate island themselves where body discovered 2 days later【2219607349900204121†L49-L53】</div>
-<div class="item">Request: Original unedited photos/videos July 4, particularly depicting alleged altercations or images of Nolan Wells【3490401251423325949†L45-L48】</div>
-</div>
-
-<p style="color:#9aa0a6;font-size:.75rem;margin-top:12px">Note: Auto-hunt disabled due to YouTube blocking GitHub Actions IPs (0 videos found). This static version displays verified forensic file directly. To add embedded players, copy YouTube video ID (11 chars after v=) and replace placeholder links with https://www.youtube.com/embed/VIDEO_ID</p>
-</div>
-
-</div>
-
 <script>
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');window.scrollTo(0,0);
+ b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');
 }));
+async function load(){
+ try{
+  const res = await fetch('forensic/evidence.json?'+Date.now());
+  const data = await res.json();
+  const ver = data.verified || {};
+  
+  // Timeline
+  document.getElementById('timeline-list').innerHTML = (ver.timeline||[]).map(t=>`<div class="item"><b>${t.time}</b> — ${t.event}<br><small style="color:#9aa0a6">${t.source} — ${t.verified?'VERIFIED YES':'UNDER REVIEW'}</small></div>`).join('');
+  
+  // Contradictions
+  document.getElementById('contradictions-list').innerHTML = (ver.contradictions||[]).map(c=>`<div class="item"><b>${c.id}. ${c.title}</b><br>${c.detail}<br><small style="color:#9aa0a6">Sources: ${(c.sources||[]).join(', ')}</small></div>`).join('');
+  
+  // Discrepancies
+  document.getElementById('discrepancies-list').innerHTML = (ver.discrepancies||[]).map(d=>`<div class="item">${d}</div>`).join('');
+  
+  // Videos
+  const vids = data.videos||[];
+  document.getElementById('video-count').textContent = vids.length + ' videos — data lives in forensic/evidence.json (not hard-coded in index)';
+  document.getElementById('video-grid').innerHTML = vids.map(v=>{
+    if(v.id && v.id.length===11){
+      return `<div class="card"><h3 style="color:#ff6b2b;font-size:.8rem">${v.title}</h3><p style="color:#9aa0a6;font-size:.7rem">${v.channel} · ${v.query_match}</p><iframe src="https://www.youtube.com/embed/${v.id}" allowfullscreen></iframe><p style="margin-top:8px"><a href="${v.url}" target="_blank" style="color:#ff6b2b">Watch on YouTube</a></p></div>`;
+    } else {
+      return `<div class="card"><h3 style="color:#ff6b2b;font-size:.8rem">${v.title}</h3><p style="color:#9aa0a6;font-size:.7rem">${v.channel}</p><div class="item"><a href="${v.url}" target="_blank" style="color:#ff6b2b">Open video list — ${v.channel}</a><br><small>${v.note||''}</small></div></div>`;
+    }
+  }).join('');
+ }catch(e){
+  document.getElementById('timeline-list').textContent='Failed to load forensic/evidence.json — check file exists';
+ }
+}
+load();
 </script>
 </body>
 </html>
