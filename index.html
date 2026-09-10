@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nolan Wells — Forensic File V2</title>
+<style>
+:root{--bg:#0a0d11;--card:#1a1f26;--text:#e8e6d9;--muted:#9aa0a6;--orange:#ff6b2b;--line:#2a323c}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+header{position:sticky;top:0;background:#0a0d11;border-bottom:1px solid var(--line);padding:14px 18px;z-index:20}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+nav button{background:#1a1f26;border:1px solid var(--line);color:var(--muted);padding:7px 12px;border-radius:9px;font-size:.68rem;font-weight:800;letter-spacing:.11em;cursor:pointer}
+nav button.active{background:var(--orange);color:#000;border-color:var(--orange)}
+.wrap{max-width:1100px;margin:auto;padding:20px}
+.section{display:none}.section.active{display:block}
+.kicker{color:var(--orange);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
+h1{font-size:clamp(1.9rem,4vw,3rem);line-height:.95;letter-spacing:-.03em;margin:10px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+.card h3{font-size:.7rem;letter-spacing:.14em;color:var(--orange);text-transform:uppercase;margin-bottom:10px}
+.stat{display:flex;justify-content:space-between;background:#12161c;border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:.85rem}
+.doc{padding:11px 12px;background:#12161c;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.doc:hover{border-color:var(--orange)}.doc small{color:var(--orange);font-weight:800;font-size:.68rem}
+#viewer{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;z-index:99;padding:16px;overflow:auto}
+#viewerBox{background:var(--card);border:1px solid var(--line);border-radius:14px;max-width:850px;margin:20px auto;padding:20px}
+#viewerBox pre{white-space:pre-wrap;word-break:break-word;background:#0f141a;padding:14px;border-radius:10px;border:1px solid var(--line);font-size:.88rem;line-height:1.7}
+.close{background:var(--orange);border:0;color:#000;font-weight:900;padding:8px 14px;border-radius:8px;cursor:pointer;margin-bottom:12px}
+</style>
+</head>
+<body>
+<header>
+<div style="font-weight:900">justicefornolanwells.com <span style="color:var(--muted);font-weight:400;font-size:.7rem;display:block">FORENSIC ENGINE V2 — pulls Officer Tatum + YouTube + News + Horn Island videos + MDMR + Scanner + auto-calc contradictions</span></div>
+<nav>
+<button class="active" data-tab="timeline">FORENSIC TIMELINE</button>
+<button data-tab="contradictions">CONTRADICTIONS</button>
+<button data-tab="discrepancies">DISCREPANCIES</button>
+<button data-tab="evidence">ALL EVIDENCE</button>
+<button data-tab="sources">SOURCES</button>
+</nav>
+</header>
+
+<div class="wrap">
+<div id="timeline" class="section active">
+<div class="kicker">JULY 3-6, 2026 · HORN ISLAND · AUTO-FORENSIC</div>
+<h1>What happened to Nolan Wells?</h1>
+<div class="card"><h3>SHORT ANSWER — AUTO-CALCULATED FROM ALL SOURCES</h3><p style="color:var(--muted);font-size:.92rem">System pulls Officer Tatum interviews, YouTube interviews, news station interviews, Horn Island July 4th videos, search team videos, MDMR/MDR reports, police scanner/dispatch/Sea Tow audio — then auto-calculates timeline gaps, drift, contradictions and discrepancies. Everything displays ON SITE — never goes to GitHub.</p></div>
+<div style="display:grid;grid-template-columns:1.1fr.9fr;gap:14px">
+<div><div class="card"><h3>TIMELINE OF EVENTS — VERIFIED</h3><div id="timelineList">Will auto-fill after first forensic pull...</div></div></div>
+<div><div class="card"><h3>CASE STATS · AUTO-CALC</h3><div class="stat"><span>EVENTS LOGGED</span><b id="eventCount">0 — waiting pull</b></div><div class="stat"><span>DISCREPANCIES</span><b id="discCount">6 flagged</b></div><div class="stat"><span>CONTRADICTIONS</span><b id="contCount">3 flagged</b></div><div class="stat"><span>SOURCES</span><b>GPS/Audio/Video/Reports</b></div></div></div>
+</div>
+</div>
+
+<div id="contradictions" class="section"><h1>Contradictions Analysis</h1><div class="card" id="contradictionsList"><p><b style="color:var(--orange)">1. ALTERNATE RIDE: UNCONFIRMED</b><br>Dispatch shows request 11:30 AM, negative at 12:21 PM. No vehicle identified. Contradicts early theory.</p><br><p><b style="color:var(--orange)">2. 1:55 PM SCENE TIMING</b><br>Counsel letter cites 1:55 PM for three-boat cluster. No native metadata. Conflicts with GPS 11:14 arrival + 4:31 movement. ~2hr41min gap.</p><br><p><b style="color:var(--orange)">3. VESSEL POSITION CHANGE</b><br>Claimed fixed until 4:00 PM, but GPS shows movement at 4:31 PM.</p></div></div>
+<div id="discrepancies" class="section"><h1>Discrepancies & Data Gaps</h1><div class="card"><ul style="padding-left:18px;color:var(--muted)"><li>Chain of Custody: No native photo/video metadata for 1:55 PM scene</li><li>Registration IDs: Boats in cluster not independently verified</li><li>Communications: 4:48 PM Sea Tow call lacks membership confirmation</li><li>Movement: 5:52-6:06 PM Fort Bayou not in initial shoreline account</li></ul></div></div>
+<div id="evidence" class="section"><h1>All Evidence — Stays On Site</h1><p style="color:var(--muted);margin-bottom:12px">Click any file — opens HERE in popup, never GitHub.com</p><div class="card"><div id="docList">No evidence yet — will auto-fill after you add sources.yaml links and run pull</div></div></div>
+<div id="sources" class="section"><h1>Sources Engine</h1><div class="card"><h3>This system automatically pulls:</h3><ul style="padding-left:18px;color:var(--muted);font-size:.9rem;line-height:2"><li>Officer Tatum interviews (YouTube transcript)</li><li>YouTube interviews — all Nolan Wells case</li><li>News interviews — WLOX, Sun Herald, WXXV</li><li>Horn Island July 4th videos + search team videos</li><li>MDMR / MDR reports (PDF)</li><li>Police scanner + dispatch + Sea Tow audio</li><li>Auto-builds master_timeline.json, contradictions.json, discrepancies.json, drift_inputs.json</li></ul></div></div>
+</div>
+
+<div id="viewer"><div id="viewerBox"><button class="close" onclick="closeViewer()">✕ CLOSE — Back to Case File</button><h2 id="viewerTitle"></h2><pre id="viewerContent"></pre></div></div>
+
+<script>
+document.querySelectorAll('nav button').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');window.scrollTo(0,0);
+ })
+});
+function closeViewer(){document.getElementById('viewer').style.display='none'}
+</script>
+</body>
+</html>
