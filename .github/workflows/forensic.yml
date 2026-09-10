@@ -1,24 +1,26 @@
-name: Forensic Pull V2
+name: forensic-hunter
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
   schedule:
-        - cron: '0 12 * * *' # daily noon UTC
+        - cron: "0 */6 * * *"
+  push:
+    paths:
+            - "pull_all.py"
+            - "sources.yaml"
 
 jobs:
-  forensic:
+  hunt:
     runs-on: ubuntu-latest
     steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-            - run: pip install pyyaml
+          python-version: "3.11"
+            - run: pip install -r requirements.txt
             - run: python pull_all.py
             - run: |
-          git config user.name "Forensic Engine"
-          git config user.email "forensic@nolanwells.com"
-          git add forensic/ evidence/ || true
-          git commit -m "Forensic V2 auto-pull - timeline + contradictions" || echo "No changes"
-          git push || echo "No push"
+          git config user.name "forensic-bot"
+          git config user.email "bot@justicefornolanwells.com"
+          git add forensic/
+          git commit -m "auto-hunt: videos + transcripts" || echo "no changes"
+          git push
