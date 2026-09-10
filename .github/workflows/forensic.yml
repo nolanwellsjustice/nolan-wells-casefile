@@ -1,0 +1,24 @@
+name: Forensic Pull V2
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+        - cron: '0 12 * * *' # daily noon UTC
+
+jobs:
+  forensic:
+    runs-on: ubuntu-latest
+    steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+            - run: pip install pyyaml
+            - run: python pull_all.py
+            - run: |
+          git config user.name "Forensic Engine"
+          git config user.email "forensic@nolanwells.com"
+          git add forensic/ evidence/ || true
+          git commit -m "Forensic V2 auto-pull - timeline + contradictions" || echo "No changes"
+          git push || echo "No push"
