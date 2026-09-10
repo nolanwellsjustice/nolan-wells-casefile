@@ -1,40 +1,18 @@
-# NOLAN WELLS FORENSIC SOURCES - V2
-# Add all your links here — system will auto-pull transcripts, details, contradictions
-
-officer_tatum_interviews:
-    - url: "https://www.youtube.com/watch?v=EXAMPLE_TATUM_1"
-    notes: "Officer Tatum interview 1"
-    - url: "https://www.youtube.com/watch?v=EXAMPLE_TATUM_2"
-    notes: "Officer Tatum interview 2"
-
-youtube_interviews:
-    - url: "https://www.youtube.com/watch?v=EXAMPLE1"
-    notes: "Horn Island witness interview"
-    - url: "https://www.youtube.com/watch?v=EXAMPLE2"
-    notes: "Family interview"
-
-news_station_interviews:
-    - url: "https://www.wlox.com/..."
-    outlet: "WLOX"
-    - url: "https://www.sunherald.com/..."
-    outlet: "Sun Herald"
-
-horn_island_july4_videos:
-    - url: "https://www.youtube.com/watch?v=EXAMPLE_HORN1"
-    notes: "Horn Island July 4th footage"
-    - url: "https://www.youtube.com/watch?v=EXAMPLE_SEARCH"
-    notes: "Search team going out"
-
-reports:
-  mdmr_report: "https://example.com/mdmr.pdf"
-  mdr_report: "https://example.com/mdr.pdf"
-  # Upload PDFs to repo if you have them: /reports/
-
-audio:
-  dispatch_audio:
-        - "https://example.com/dispatch_july4.mp3"
-  police_scanner:
-        - "https://example.com/scanner.mp3"
-  seatow_call: "https://example.com/seatow.mp3"
-
-# After you add real links, the pull_all.py will auto-transcribe and analyze
+# AUTO-HUNTER QUERIES - NO LINKS NEEDED - SCRIPT SEARCHES ON ITS OWN
+mode: auto_hunt
+youtube_queries:
+    - Officer Tatum Nolan Wells interview
+    - Nolan Wells friend interview WLOX
+    - Nolan Wells friend interview WXXV
+    - Nolan Wells Sun Herald interview
+    - Horn Island July 4th Nolan Wells
+    - Horn Island search team video
+    - Jackson County Sheriff Nolan Wells
+mdmr:
+  auto_search: true
+  portal: https://dmr.ms.gov
+scanner:
+  auto_search: true
+  queries:
+        - Jackson County dispatch July 4 2026
+        - Sea Tow Ocean Springs July 4
