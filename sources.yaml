@@ -1,18 +1,210 @@
-# AUTO-HUNTER QUERIES - NO LINKS NEEDED - SCRIPT SEARCHES ON ITS OWN
-mode: auto_hunt
-youtube_queries:
-    - Officer Tatum Nolan Wells interview
-    - Nolan Wells friend interview WLOX
-    - Nolan Wells friend interview WXXV
-    - Nolan Wells Sun Herald interview
-    - Horn Island July 4th Nolan Wells
-    - Horn Island search team video
-    - Jackson County Sheriff Nolan Wells
-mdmr:
-  auto_search: true
-  portal: https://dmr.ms.gov
-scanner:
-  auto_search: true
-  queries:
-        - Jackson County dispatch July 4 2026
-        - Sea Tow Ocean Springs July 4
+# Nolan Wells Evidence File — 25 Layers — Auto-pull sources
+# Last reviewed: August 28, 2026 methodology
+# Evidence Rule: What happened? How do we know? How confident? What remains unknown?
+
+site_base: https://justicefornolanwells.com
+archive_name: nolan-wells-casefile
+evidence_rule: "Fact and interpretation stay separate"
+
+# 25 Layers mapped from your site
+layers:
+    - id: home
+    path: /
+    type: evidence_archive
+    classification: Verified
+    confidence: High
+
+    - id: case_summary
+    path: /case-summary
+    type: verified_anchors
+    gap: "3:45-4:31 PM critical window"
+    classification: Verified
+
+    - id: witness_claim_ledger
+    path: /witness-claim-ledger
+    type: ledger
+    entries: 208
+    people: 23
+    classification: Firsthand witness
+
+    - id: reconstruction_lab
+    path: /reconstruction-lab
+    type: 3d
+    data: USACE Topobathy 1:55 PM panorama
+    classification: Media record
+
+    - id: account_order_story
+    path: /account-order-story
+    type: story
+    events: 40
+    range: "July 3-8"
+    classification: Secondhand
+
+    - id: documents_archive
+    path: /documents-archive
+    type: documents
+    records: 25
+    file_tree: MP2607
+    classification: Verified
+
+    - id: drift_lab
+    path: /drift-lab
+    type: drift
+    reverse: 6000
+    forward: 20000
+    results: {horn_island: 98.6, petit_bois: 0.2, sand: 3.9}
+    classification: Hypothesis
+
+    - id: video_archive
+    path: /video-archive
+    type: video
+    records: 67
+    classification: Media record
+
+    - id: plunder_source_archive
+    path: /plunder-source-archive
+    type: source_archive
+    posts: 4
+    attachments: 144
+    unique: 131
+    sha256_public: 6
+    classification: Verified
+
+    - id: dispatch_audio_timeline
+    path: /dispatch-audio-timeline
+    type: audio
+    files: 115
+    duration: "59h34m"
+    segments: 26
+    range: "July 4 5:53 PM - July 6 2:47 AM"
+    classification: Verified
+
+    - id: information_chain_review
+    path: /information-chain-review
+    type: chain
+    relay: "3:00 PM Relay"
+    compression: "91-min"
+    classification: Hypothesis
+
+    - id: body_recovery_record
+    path: /body-recovery-record
+    type: recovery
+    notification: "July 6 8:45 AM"
+    cad: "9:11:09-10:07:36"
+    wlox_arrival: "11:00 AM"
+    family_confirmation: "before 1:00 PM"
+    classification: Verified
+
+    - id: ucn_report_review
+    path: /ucn-report-review
+    type: report
+    date: "July 31"
+    pages: 22
+    exhibit: "A3 Warren on Palm Beach unverified"
+    classification: Secondhand
+
+    - id: social_source_ledger
+    path: /social-source-ledger
+    type: ledger
+    blocks: "566+2,253+586"
+    supplemental: 8
+    classification: Media record
+
+    - id: facebook_research_audit
+    path: /facebook-research-audit
+    type: audit
+    posts: 154
+    comments: 1000
+    corrections: 4
+    classification: Verified
+
+    - id: last_contact_matrix
+    path: /last-contact-matrix
+    type: matrix
+    witnesses: 6
+    classification: Firsthand witness
+
+    - id: contradictions
+    path: /contradictions
+    type: contradictions
+    comparisons: 18
+    classification: Unknown
+
+    - id: missing_evidence_tracker
+    path: /missing-evidence-tracker
+    type: tracker
+    items: 20
+    found_complete: 4
+    classification: Unknown
+
+    - id: coordinate_explorer
+    path: /coordinate-explorer
+    type: coordinates
+    events: 12
+    coordinates: 9
+    reference: {name: "Recovery ref", lat: 30.242014, lon: -88.778409}
+    classification: Verified
+
+    - id: question_tracker
+    path: /question-tracker
+    type: questions
+    open: 14
+    partially_answered: 4
+    classification: Unknown
+
+    - id: people_connections
+    path: /people-connections
+    type: graph
+    people: 14
+    relationships: 19
+    last_review: "July 30 2026"
+    classification: Firsthand witness
+
+    - id: boats
+    path: /boats
+    type: vessels
+    records: 4
+    vessels: ["MI4088BU", "MI1295CB", "Tracestin family boat", "Private assisting vessel"]
+    classification: Verified
+
+    - id: timeline_gaps
+    path: /timeline-gaps
+    type: gaps
+    critical_window: "3:45-4:31 PM"
+    gaps: 23
+    classification: Unknown
+
+    - id: methodology
+    path: /methodology
+    type: methodology
+    last_reviewed: "August 28, 2026"
+    evidence_types: ["Verified", "Firsthand witness", "Secondhand", "Media record", "Unknown", "Hypothesis"]
+    confidence: ["High", "Medium", "Low"]
+    classification: Verified
+
+    - id: evidence_rule
+    path: /methodology#evidence-rule
+    type: rule
+    rule: "Fact and interpretation stay separate"
+    questions:
+            - "What happened? The narrow factual or reported claim"
+            - "How do we know? The document, witness, media, or analytical basis"
+            - "How confident? A visible level with a written reason"
+            - "What remains unknown? The gap and the record needed to resolve it"
+    classification: Verified
+
+# Machine-readable access from Methodology layer
+llms:
+    - /llms.txt
+    - /llms-full.txt
+
+# GPS coordinates from Coordinate Explorer layer
+coordinates:
+    - {name: "Northwest Horn Island recovery ref", lat: 30.242014, lon: -88.778409, miles: 0.00}
+    - {name: "El Camino Real Road", lat: 30.433343, lon: -88.848426, miles: 13.86}
+    - {name: "Horn Island west tip", lat: 30.243508, lon: -88.777755, miles: 0.11}
+    - {name: "MI4088BU slow movement", lat: 30.288414, lon: -88.790442, miles: 3.29}
+    - {name: "Horn Island search area", lat: 30.252, lon: -88.75, miles: 1.83}
+    - {name: "Garmin anchor coordinate", lat: 30.243767, lon: -88.77715, miles: 0.14}
+    - {name: "Sea Tow caller coordinate", lat: 30.244733, lon: -88.779833, miles: 0.21}
+    - {name: "First drone launch", lat: 30.243383, lon: -88.773783, miles: 0.29}
