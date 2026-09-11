@@ -1,33 +1,23 @@
-name: forensic-hunter
+name: Forensic Auto-Pull 25 Layers
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 */6 * * *"
   push:
-    paths:
-      - "pull_all.py"
-      - "sources.yaml"
-      - "requirements.txt"
-
-permissions:
-  contents: write
+    branches: [main]
+  schedule:
+    - cron: '0 */3 * * *' # every 3 hours
+  workflow_dispatch:
 
 jobs:
-  hunt:
+  pull:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install
-        run: pip install yt-dlp requests pyyaml
-      - name: Hunt
-        run: python pull_all.py
-      - name: Commit
-        run: |
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements.txt
+      - run: python pull_all.py
+      - run: |
           git config user.name "forensic-bot"
           git config user.email "bot@justicefornolanwells.com"
-          git add forensic/ || true
-          git commit -m "auto-hunt: videos found" || echo "no changes"
-          git push || echo "push done"
+          git add forensic/
+          git diff --staged --quiet || git commit -m "Auto-pull 25 layers $(date -u)"
+          git push
