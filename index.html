@@ -1,123 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Justice for Nolan Wells — 25 Layer Evidence Archive — Single Page</title>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Justice for Nolan Wells — Complete Archive</title>
 <style>
-body{font-family:system-ui,sans-serif;max-width:1150px;margin:0 auto;padding:14px;background:#0a0a0a;color:#e5e5e5;line-height:1.6}
-h1,h2,h3{color:#fff} .card{border:1px solid #333;padding:16px;border-radius:14px;margin:12px 0;background:#111}
-.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;margin-right:5px;border:1px solid #444}
-.Verified{border-color:#22c55e;color:#22c55e} .Firsthand{border-color:#3b82f6;color:#60a5fa}
-.Secondhand{border-color:#f59e0b;color:#fbbf24} .Media{border-color:#a78bfa;color:#c4b5fd}
-.Unknown{border-color:#ef4444;color:#fca5a5} .Hypothesis{border-color:#9ca3af;color:#d1d5db}
-a{color:#60a5fa;text-decoration:none} nav{position:sticky;top:0;background:#0a0a0a;padding:8px 0;z-index:10;border-bottom:1px solid #333;overflow:auto;white-space:nowrap}
-nav a{margin-right:12px;font-size:13px} .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
-small{color:#999}
-</style>
-</head>
-<body>
+body{font-family:system-ui;background:#0a0a0a;color:#eee;max-width:1200px;margin:0 auto;padding:12px}
+h1{color:#fff} .tabs{display:flex;gap:8px;overflow:auto;position:sticky;top:0;background:#0a0a0a;padding:10px 0;border-bottom:1px solid #333;z-index:10}
+.tab{padding:8px 14px;border:1px solid #333;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tab.active{background:#fff;color:#000} .section{display:none} .section.active{display:block}
+.card{border:1px solid #333;background:#111;padding:14px;border-radius:12px;margin:10px 0}
+a{color:#60a5fa} .badge{font-size:11px;border:1px solid #444;padding:2px 6px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+</style></head><body>
 
-<h1>Justice for Nolan Wells — Evidence Archive</h1>
-<p><b>Evidence Rule:</b> Fact and interpretation stay separate — What happened? How do we know? How confident? What remains unknown? | <b>Last Reviewed:</b> Aug 28, 2026</p>
-<p><a href="/llms.txt">llms.txt</a> | <a href="/llms-full.txt">llms-full.txt</a> | <a href="https://github.com/nolan-wells-justice/nolan-wells-casefile">Public Repo</a></p>
+<h1>Justice for Nolan Wells — Organized Archive</h1>
+<p>Bot pulls every article, video, report on its own — click to view full — Evidence Rule: What happened? How do we know? How confident? What remains unknown?</p>
 
-<nav>
-<a href="#status">Status</a><a href="#case-summary">Case Summary</a><a href="#witness-ledger">Witness Ledger</a><a href="#reconstruction">Reconstruction</a><a href="#boats">Boats NEW</a><a href="#coordinates">Coordinates</a><a href="#people-connections">People NEW</a><a href="#timeline-gaps">Timeline Gaps NEW</a><a href="#question-tracker">Questions NEW</a><a href="#methodology">Methodology NEW</a>
-</nav>
-
-<div id="status" class="card">Loading forensic/manifest.json — 25 layers auto-pulled — forensic-bot runs every 3h</div>
-
-<h2 id="case-summary">2. Case Summary — Gap 3:45-4:31 PM</h2>
-<div class="card"><span class="badge Verified">Verified</span><span class="badge Unknown">Critical Window</span><p>What happened: 3:45-4:31 PM remains unknown interval. How do we know: Dispatch + CAD + drone timeline. How confident: Low for this window. What remains unknown: Activity between 3:45-4:31.</p></div>
-
-<h2 id="witness-ledger">3. Witness Claim Ledger — 208 entries, 23 people</h2>
-<div id="witness-ledger-content" class="card">Loading from forensic/...</div>
-
-<h2 id="boats">22. Boats — 4 Vessels — NEW LAYER — Fixed Evidence Rule</h2>
-<div class="card">
-<span class="badge Verified">Verified — GPS Movement</span><span class="badge Secondhand">Secondhand — Passenger/Intent Separate</span>
-<div class="grid">
-<div><b>MI4088BU</b><br><small>What: Slow movement 30.288414, -88.790442 3.29mi from recovery<br>How: GPS log Verified<br>Confidence: High for movement, Low for who onboard<br>Unknown: Transfer / intent</small></div>
-<div><b>MI1295CB</b><br><small>What: Assisting vessel<br>How: CAD 9:11:09-10:07:36<br>Confidence: Medium<br>Unknown: Exact time on scene</small></div>
-<div><b>Tracestin family boat</b><br><small>What: Family vessel<br>How: Firsthand witness<br>Confidence: High for existence<br>Unknown: Passenger manifest</small></div>
-<div><b>Private assisting vessel</b><br><small>What: Private boat on scene July 6<br>How: Media record WLOX 11:00 AM<br>Confidence: Medium<br>Unknown: Registration</small></div>
-</div>
-<p><b>Evidence Rule Applied:</b> GPS movement ≠ passenger ≠ transfer ≠ intent — each tracked separately.</p>
+<div class="tabs">
+<div class="tab active" onclick="show('articles')">Articles — All</div>
+<div class="tab" onclick="show('videos')">Videos — All</div>
+<div class="tab" onclick="show('reports')">Reports — Full</div>
+<div class="tab" onclick="show('boats')">Boats — 4 Vessels</div>
+<div class="tab" onclick="show('timeline')">Timeline Gaps</div>
+<div class="tab" onclick="show('people')">People — 14</div>
+<div class="tab" onclick="show('evidence')">Evidence — 25 Layers</div>
 </div>
 
-<h2 id="people-connections">21. People & Connections — 14 people, 19 relationships — NEW</h2>
-<div class="card">
-<span class="badge Firsthand">Firsthand</span> <span class="badge">Last review July 30 2026</span>
-<pre>
-People: Nolan Wells, Family (6), Boaters (4), Dispatch, USCG, Sea Tow, WLOX, MS DMR
-Relationships: 19 — Who knew who, who called who, who was on which boat
-What happened: Network map of contacts
-How do we know: 6 witness matrix + dispatch audio 115 files + CAD
-How confident: High for existence of people, Medium for relationships
-What remains unknown: Exact passenger on each vessel during 3:45-4:31
-</pre>
-</div>
-
-<h2 id="timeline-gaps">23. Timeline Gaps — Critical Window 3:45-4:31 PM — NEW — 23 gaps</h2>
-<div class="card">
-<span class="badge Unknown">Unknown intervals remain unknown</span>
-<pre>
-Critical: 3:45-4:31 PM — 46 minutes — No verified location
-Gap 1: 3:00 PM Relay — 91-min compression — Information Chain Review
-Gap 2: July 4 5:53 PM - July 6 2:47 AM — 26 segments dispatch audio
-Gap 3: Body recovery — Notification 8:45 AM July 6 vs CAD 9:11:09-10:07:36 vs WLOX 11:00 AM vs family confirmation before 1:00 PM
-
-Evidence Rule: Unknown stays unknown until record found — 20 items in Missing Evidence Tracker, 4 found complete
-</pre>
-</div>
-
-<h2 id="coordinates">19. Coordinate Explorer — 9 Points — Recovery Ref 30.242014, -88.778409</h2>
-<div id="coords" class="card">Loading forensic/coordinates.json...</div>
-
-<h2 id="question-tracker">20. Question Tracker — 14 open, 4 partially answered — NEW</h2>
-<div class="card">
-<span class="badge Unknown">Open Questions</span>
-<pre>
-Q1: What happened 3:45-4:31 PM? — Unknown — Need GPS + witness
-Q2: Who was on MI4088BU during slow movement? — Unknown — Need manifest
-Q3: When did A3 Warren on Palm Beach occur? — Exhibit unverified UCN Report July 31 p22
-Q4: Why 91-min compression in Information Chain? — Hypothesis — Need original relay log
-... + 10 more open, 4 partially answered
-Each: What happened? How do we know? How confident? What remains unknown?
-</pre>
-</div>
-
-<h2 id="methodology">24. Methodology — Last Reviewed Aug 28 2026 — NEW</h2>
-<div class="card">
-<span class="badge Verified">Verified</span>
-<b>6 Evidence Types:</b> Verified, Firsthand witness, Secondhand, Media record, Unknown, Hypothesis<br>
-<b>3 Confidence:</b> High — document + corroboration, Medium — single source or time drift, Low — inference or gap<br>
-<b>Rule:</b> Fact and interpretation stay separate<br>
-<b>Last reviewed:</b> Aug 28 2026 — Matches your site /methodology<br>
-<b>Machine:</b> /llms.txt and /llms-full.txt from Methodology layer
-</div>
-
-<h2>All 25 Layers — On One Page — Auto-pulled from forensic/</h2>
-<div id="layers"></div>
+<div id="articles" class="section active"><h2>Every Article — Click headline → full article</h2><div id="articles-list" class="grid"></div></div>
+<div id="videos" class="section"><h2>Every Video Ever Posted — Click → full video</h2><div id="videos-list" class="grid"></div></div>
+<div id="reports" class="section"><h2>Every Report Administered — Click → full report</h2><div id="reports-list" class="grid"></div></div>
+<div id="boats" class="section"><h2>Boats — 4 Vessels — GPS separate from intent</h2><div class="card"><b>MI4088BU</b> 30.288414,-88.790442 3.29mi — Verified GPS movement ≠ passenger ≠ intent<br><b>MI1295CB</b> CAD 9:11:09-10:07:36 — Assisting<br><b>Family boat</b> — Firsthand<br><b>Private vessel</b> — WLOX 11:00 AM</div></div>
+<div id="timeline" class="section"><h2>Timeline Gaps — Click gap → details</h2><div class="card"><b>CRITICAL: 3:45-4:31 PM — 46 min unknown</b> — How: Dispatch + CAD + drone — Confidence: Low — Unknown stays unknown<br><b>3:00 PM Relay — 91-min compression</b><br><b>July 4 5:53 PM - July 6 2:47 AM — 26 dispatch audio</b></div></div>
+<div id="people" class="section"><h2>People & Connections — 14 people, 19 relationships</h2><div class="card">Nolan Wells, Family 6, Boaters 4, Dispatch, USCG, Sea Tow, WLOX, MS DMR — Last review July 30 2026</div></div>
+<div id="evidence" class="section"><h2>All 25 Layers — Auto-pulled by forensic-bot</h2><div id="evidence-list"></div></div>
 
 <script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+
 async function load(){
- try{
-  const m = await fetch('forensic/manifest.json').then(r=>r.json());
-  document.getElementById('status').innerHTML = `✓ Auto-pulled ${Object.keys(m).length} layers — forensic-bot ${new Date().toLocaleString()} — Single Page Archive`;
-  document.getElementById('witness-ledger-content').innerHTML = `Manifest shows ${Object.keys(m).length} files archived — 208 entries expected`;
-  document.getElementById('layers').innerHTML = Object.entries(m).map(([p,i])=>`<div class="card"><b>${p}</b> <span class="badge ${i.classification||'Verified'}">${i.classification||'Verified'}</span> <small>${i.url}</small></div>`).join('');
- }catch(e){
-  document.getElementById('status').innerHTML = 'Waiting for forensic-bot — will fill forensic/manifest.json in 3-5 min after commit';
+ const m = await fetch('forensic/manifest.json').then(r=>r.json()).catch(()=>null);
+ const ev = await fetch('forensic/evidence.json').then(r=>r.json()).catch(()=>[]);
+ const co = await fetch('forensic/coordinates.json').then(r=>r.json()).catch(()=>[]);
+
+ if(ev && ev.length){
+  document.getElementById('articles-list').innerHTML = ev.filter(e=>e.type==='article').map(a=>`<div class="card"><span class="badge">${a.classification}</span><br><a href="${a.url}" target="_blank"><b>${a.title}</b></a><br><small>${a.origin} — ${a.how}</small><br><a href="forensic/${a.file||''}">View full archived →</a></div>`).join('') || '<div class="card">Loading articles from forensic/evidence.json — bot pulls on its own</div>';
+  document.getElementById('videos-list').innerHTML = ev.filter(e=>e.type==='video').map(v=>`<div class="card"><a href="${v.url}" target="_blank"><b>${v.title}</b></a><br><small>${v.origin}</small><br><video controls width="100%" src="${v.url}"></video><br><a href="forensic/${v.file||''}">View full archived →</a></div>`).join('') || '<div class="card">Loading videos — WLOX, drone, family</div>';
+  document.getElementById('reports-list').innerHTML = ev.filter(e=>e.type==='report').map(r=>`<div class="card"><a href="${r.url}" target="_blank"><b>${r.title}</b></a><br><small>${r.origin} — Confidence: ${r.confidence}</small><br><a href="forensic/${r.file||''}">Click to view full report right there →</a></div>`).join('') || '<div class="card">Loading reports — CAD, UCN, Recovery Ref 30.242014,-88.778409</div>';
  }
- try{
-  const c = await fetch('forensic/coordinates.json').then(r=>r.json());
-  document.getElementById('coords').innerHTML = c.map(o=>`${o.name}: ${o.lat}, ${o.lon} (${o.miles}mi)`).join('<br>');
- }catch(e){}
+
+ if(m){document.getElementById('evidence-list').innerHTML = Object.entries(m.layers||m).map(([k,v])=>`<div class="card"><b>${k}</b><br><small>${typeof v==='string'?v:v.origin||''}</small></div>`).join('');}
 }
 load();
 </script>
-
-</body>
-</html>
+</body></html>
