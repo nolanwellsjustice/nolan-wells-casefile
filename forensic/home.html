@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-136ZM5M3LM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-136ZM5M3LM');
+  </script>
+  <meta name="google-site-verification" content="dDEnodo6l9BmLIAKRhK1VLzA3TN4BdfW2nzYzAHjTSg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A sourced, event-order reconstruction of the Nolan Wells case from July 3–8, preserving witness accounts without forcing remembered clock times.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#060b14">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nolan Wells Evidence File">
+  <meta property="og:title" content="Nolan Wells · Account-Order Timeline">
+  <meta property="og:description" content="The July 3–8, 2026 Nolan Wells story arranged by event sequence, with witness accounts, objective records, and unresolved collisions kept distinct.">
+  <meta property="og:url" content="https://justicefornolanwells.com/">
+  <meta property="og:image" content="https://justicefornolanwells.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://justicefornolanwells.com/">
+  <title>Nolan Wells · Account-Order Timeline</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://server.arcgisonline.com">
+  <link rel="preconnect" href="https://basemaps.cartocdn.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/seo.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to account-order story</a>
+
+  <div id="map" aria-hidden="true"></div>
+  <div id="map-fallback" aria-hidden="true">
+    <div class="fallback-coast"></div>
+  </div>
+
+  <nav class="top-controls" aria-label="Story resources">
+    <div class="timeline-menu">
+      <button class="control-button" id="timeline-menu-toggle" type="button" aria-controls="timeline-dropdown" aria-expanded="false" aria-haspopup="true">
+        <svg aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 4.8V8l2.4 1.5"/></svg>
+        <span>Sequence</span>
+      </button>
+      <div class="timeline-dropdown" id="timeline-dropdown" aria-hidden="true" aria-labelledby="timeline-menu-toggle">
+        <div class="timeline-dropdown-header">
+          <p>Event-order index</p>
+          <span>Witness accounts are arranged by before-and-after relationships. Clock recollections do not control the order.</span>
+        </div>
+        <div id="confirmed-times-list"></div>
+      </div>
+    </div>
+    <a class='control-link' href='/event-timeline' title='Open full evidence log'>
+      <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 2.5h10v11H3zM5.5 5h5M5.5 8h5M5.5 11h3"/></svg>
+      <span>Event log</span>
+    </a>
+    <a class='control-link' href='/documents/master-investigation-notes' title='Open master investigation notes'>
+      <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M4 2.5h6l2 2v9H4zM10 2.5v2h2M6 7h4M6 9.5h4"/></svg>
+      <span>Master notes</span>
+    </a>
+    <a class='control-link' href='/archive' title='Open evidence archive'>
+      <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M2.5 4h11v9h-11zM4 2.5h8V4M5 7h6M5 9.5h6"/></svg>
+      <span>Archive</span>
+    </a>
+    <a class='control-link' href='/reconstruction-lab' title='Open Horn Island reconstruction lab'>
+      <span aria-hidden="true">◇</span>
+      <span>3D Lab</span>
+    </a>
+    <a class='control-link' href='/drift-lab' title='Open reverse drift and candidate test lab'>
+      <span aria-hidden="true">≋</span>
+      <span>Drift Lab</span>
+    </a>
+    <a class='control-link' href='/video-archive' title='Open interview and video archive'>
+      <svg aria-hidden="true" viewBox="0 0 16 16"><rect x="2.5" y="3" width="11" height="10" rx="1"/><path d="m6.5 5.5 4 2.5-4 2.5z"/></svg>
+      <span>Videos</span>
+    </a>
+    <button class="control-button" type="button" data-panel-target="transcripts-panel" aria-controls="transcripts-panel" aria-expanded="false">
+      <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 2.5h10v11H3zM5.5 5h5M5.5 8h5M5.5 11h3"/></svg>
+      <span>Transcripts</span>
+    </button>
+    <button class="control-button" type="button" data-panel-target="boats-panel" aria-controls="boats-panel" aria-expanded="false">
+      <svg class="fill-icon" aria-hidden="true" viewBox="0 0 16 16"><path d="M2 11.5 3.5 7h9l1.5 4.5H2ZM7.5 2h1v5h-1zM8.5 2.5 13 5.3l-4.5.2z"/></svg>
+      <span>Boats</span>
+    </button>
+  </nav>
+
+  <aside class="reference-panel" id="transcripts-panel" aria-hidden="true" aria-labelledby="transcripts-title">
+    <div class="panel-header">
+      <div><p class="panel-kicker">Source archive</p><h2 id="transcripts-title">Interview transcripts</h2></div>
+      <button class="panel-close" type="button" aria-label="Close transcripts panel">×</button>
+    </div>
+    <div id="transcripts-list" class="panel-list"></div>
+  </aside>
+
+  <aside class="reference-panel" id="boats-panel" aria-hidden="true" aria-labelledby="boats-title">
+    <div class="panel-header">
+      <div><p class="panel-kicker">Vessel reference</p><h2 id="boats-title">Boats in the record</h2></div>
+      <button class="panel-close" type="button" aria-label="Close boats panel">×</button>
+    </div>
+    <div id="boats-list" class="panel-list"></div>
+  </aside>
+
+  <main id="story" class="scroll-container" tabindex="-1">
+    <noscript>
+      <section class="step"><div class="step-content"><p class="step-time">Text version available</p><h1 class="step-title">What Happened to Nolan Wells?</h1><p class="step-summary">Nolan Wells left home on July 3 to spend the Fourth of July with close friends at Horn Island. He never made it home. His phone returned to the mainland without him, the search widened, and two days later he was found near the island’s northwest tip. This is the story of what everyone says happened—and the unanswered questions their accounts leave behind. Read the <a href='/case-summary'>sourced case summary</a> or <a href='/documents/master-investigation-notes'>master investigation notes</a> without JavaScript.</p></div></section>
+    </noscript>
+  </main>
+
+  <div class="map-key" aria-hidden="true">
+    <span><i class="key-route"></i> MI4088BU schematic route</span>
+    <span>Official movement anchors · not a raw Garmin track</span>
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded evidence image">
+    <button id="lightbox-close" class="lightbox-close" type="button"><span class="lightbox-close-icon" aria-hidden="true">×</span><span>Hide image</span></button>
+    <img id="lightbox-image" alt="">
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <div id="page-status" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script src="./assets/timeline-data.js?v=20260807b"></script>
+  <script src="./assets/account-sequence.js?v=20260910a"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="./assets/home.js?v=20260903b"></script>
+</body>
+</html>

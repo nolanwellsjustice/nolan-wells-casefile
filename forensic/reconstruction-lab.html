@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-136ZM5M3LM"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-136ZM5M3LM');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Evidence-backed 3D reconstruction workspace for the July 4, 2026 Horn Island timeline.">
+  <meta name="theme-color" content="#07100f">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://justicefornolanwells.com/reconstruction-lab">
+  <title>Horn Island Reconstruction Lab · Nolan Wells Evidence File</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/reconstruction-lab.css?v=20260907a">
+  <script src="./assets/seo.js?v=20260907b"></script>
+  <script type="importmap">
+    {"imports":{"three":"./assets/vendor/three/three.module.min.js","three/addons/":"./assets/vendor/three/addons/"}}
+  </script>
+</head>
+<body data-page="reconstruction-lab">
+  <a class="skip-link" href="#lab-workspace">Skip to reconstruction workspace</a>
+  <div class="lab-shell" id="lab-app">
+    <header class="lab-topbar">
+      <div class="brand-block">
+        <a aria-label='Return to evidence archive' class='back-link' href='/archive'>←</a>
+        <div>
+          <p class="eyebrow">July 4, 2026 · west tip, Horn Island</p>
+          <h1>Reconstruction Lab <span>Analytical workspace</span></h1>
+        </div>
+      </div>
+      <div class="scenario-controls">
+        <label class="field compact-field"><span>Scenario</span><select id="scenario-select" aria-label="Active scenario"></select></label>
+        <button class="button button-quiet" id="duplicate-scenario" type="button">Duplicate</button>
+        <button class="button button-primary" id="save-scenario" type="button">Save</button>
+        <button class="icon-button" id="more-actions" type="button" aria-controls="action-menu" aria-expanded="false" title="Scenario actions">•••</button>
+        <div class="action-menu" id="action-menu" hidden>
+          <button type="button" id="duplicate-scenario-menu">Duplicate scenario</button>
+          <button type="button" id="save-scenario-menu">Save in browser</button>
+          <button type="button" id="rename-scenario">Rename scenario</button>
+          <button type="button" id="export-scenario">Export scenario</button>
+          <button type="button" id="import-scenario">Import scenario</button>
+          <button type="button" id="reset-scenario">Reset working copy</button>
+          <button type="button" id="delete-scenario">Delete scenario</button>
+          <button type="button" id="open-help">Keyboard help</button>
+        </div>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </div>
+    </header>
+
+    <main class="lab-workspace" id="lab-workspace">
+      <aside class="lab-panel layers-panel" id="layers-panel" aria-label="Layers and objects">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Scene graph</p><h2>Layers & objects</h2></div>
+          <button class="panel-toggle" type="button" data-close-panel="layers-panel" aria-label="Close layers panel">×</button>
+        </div>
+        <div class="panel-scroll">
+          <section class="panel-section">
+            <div class="section-heading"><h3>Layers</h3><button class="text-button" id="show-all-layers" type="button">Show all</button></div>
+            <div class="layer-list" id="layer-list"></div>
+          </section>
+          <section class="panel-section objects-section">
+            <div class="section-heading"><h3>Objects</h3><button class="small-button" id="add-object" type="button">+ Add</button></div>
+            <label class="search-field"><span class="sr-only">Search objects</span><input id="object-search" type="search" placeholder="Search scene"></label>
+            <div class="object-list" id="object-list" role="listbox" aria-label="Scene objects"></div>
+          </section>
+          <section class="panel-section legend-section">
+            <h3>Placement state</h3>
+            <div class="legend" id="evidence-legend"></div>
+          </section>
+        </div>
+      </aside>
+
+      <section class="viewport-column" aria-label="3D reconstruction view">
+        <div class="viewport-toolbar">
+          <div class="mobile-panel-actions">
+            <button class="button button-quiet" type="button" data-open-panel="layers-panel">Layers</button>
+            <button class="button button-quiet" type="button" data-open-panel="inspector-panel">Inspector</button>
+            <button class="button button-quiet mobile-diff-button" id="mobile-diff-button" type="button">Diff</button>
+          </div>
+          <div class="segmented" aria-label="View presets">
+            <button class="is-active" type="button" data-view="perspective">3D</button>
+            <button type="button" data-view="overhead">Overhead</button>
+            <button type="button" data-view="beach">Beach</button>
+            <button type="button" data-view="camera">Camera</button>
+          </div>
+          <div class="tool-group" aria-label="Analysis tools">
+            <button class="tool-button is-active" type="button" data-tool="select" title="Select and move">Select</button>
+            <button class="tool-button" type="button" data-tool="measure" title="Measure distance and bearing">Measure</button>
+            <button class="tool-button" type="button" data-tool="los" title="Test line of sight">Sightline</button>
+          </div>
+          <button class="button button-quiet compare-button" id="compare-toggle" type="button" aria-pressed="false">Compare</button>
+        </div>
+
+        <div class="viewport-stage" id="viewport-stage">
+          <div class="viewport" id="viewport-primary" tabindex="0" aria-label="Interactive 3D scene. Drag to orbit, use the mouse wheel to zoom, and select objects from the object list for keyboard-accessible editing.">
+            <canvas id="scene-canvas"></canvas>
+            <div class="viewport-loading" id="viewport-loading" role="status"><span></span><p>Building the west-tip surface…</p></div>
+            <div class="viewport-empty" id="webgl-fallback" hidden>
+              <p class="eyebrow">3D view unavailable</p>
+              <h2>The evidence workspace is still available.</h2>
+              <p>Use the object list, timeline, coordinates, measurements, environmental records, and scenario controls without WebGL.</p>
+              <dl><div><dt>West-tip reference</dt><dd>30.243508, −88.777755</dd></div><div><dt>Scene datum</dt><dd>EPSG:6345 · NAVD88</dd></div><div><dt>Source surface</dt><dd>2021 USACE topobathymetry</dd></div></dl>
+              <a href='/coordinates#coordinate-hornIsland'>Open the accessible coordinate explorer →</a>
+            </div>
+            <div class="orientation" aria-hidden="true"><span>N</span><i></i></div>
+            <div class="scale-readout" id="scale-readout">100 m</div>
+            <div class="source-badge"><i></i><span><strong>2021 USACE Topobathy</strong><small>1 m source · NAVD88 · provenance visible</small></span></div>
+            <div class="selection-hint" id="selection-hint">Select an object to inspect or move it</div>
+            <div class="camera-overlay" id="camera-overlay" hidden>
+              <img id="camera-source-image" alt="">
+              <div class="camera-wipe" id="camera-wipe"></div>
+            </div>
+          </div>
+          <div class="viewport comparison-viewport" id="viewport-comparison" hidden aria-label="Comparison scenario view">
+            <canvas id="compare-canvas"></canvas>
+            <p class="comparison-label">Comparison</p>
+          </div>
+        </div>
+
+        <section class="timeline-panel" aria-label="Reconstruction timeline">
+          <div class="timeline-controls">
+            <button class="play-button" id="play-toggle" type="button" aria-label="Play reconstruction"><span class="play-icon">▶</span><span class="pause-icon">Ⅱ</span></button>
+            <div class="clock"><strong id="current-time">1:55 PM</strong><small>CDT</small></div>
+            <label class="speed-control"><span>Speed</span><select id="playback-speed"><option value="60">1 min/s</option><option value="300">5 min/s</option><option value="900">15 min/s</option></select></label>
+          </div>
+          <div class="timeline-track-wrap">
+            <div class="timeline-range-labels"><span id="timeline-start-label">10:30 AM</span><button id="timeline-range-toggle" type="button">Show full day</button><span id="timeline-end-label">6:30 PM</span></div>
+            <input id="time-slider" class="time-slider" type="range" min="630" max="1110" value="835" step="1" aria-label="Current reconstruction time">
+            <div class="timeline-events" id="timeline-events" aria-hidden="true"></div>
+          </div>
+          <button class="timeline-expand" id="timeline-expand" type="button" aria-expanded="false">Events <span id="event-count">0</span></button>
+          <div class="timeline-event-drawer" id="timeline-event-drawer" hidden></div>
+        </section>
+      </section>
+
+      <aside class="lab-panel inspector-panel" id="inspector-panel" aria-label="Inspector">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Selected record</p><h2 id="inspector-title">Triton · MI4088BU</h2></div>
+          <button class="panel-toggle" type="button" data-close-panel="inspector-panel" aria-label="Close inspector">×</button>
+        </div>
+        <div class="inspector-tabs" role="tablist" aria-label="Inspector sections">
+          <button class="is-active" role="tab" aria-selected="true" data-tab="properties">Properties</button>
+          <button role="tab" aria-selected="false" data-tab="evidence">Evidence</button>
+          <button role="tab" aria-selected="false" data-tab="constraints">Checks</button>
+          <button role="tab" aria-selected="false" data-tab="camera">Camera</button>
+          <button role="tab" aria-selected="false" data-tab="environment">Conditions</button>
+        </div>
+        <div class="panel-scroll inspector-scroll">
+          <div class="tab-panel is-active" data-tab-panel="properties" id="properties-panel"></div>
+          <div class="tab-panel" data-tab-panel="evidence" id="evidence-panel"></div>
+          <div class="tab-panel" data-tab-panel="constraints" id="constraints-panel"></div>
+          <div class="tab-panel" data-tab-panel="camera" id="camera-panel"></div>
+          <div class="tab-panel" data-tab-panel="environment" id="environment-panel"></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <dialog class="lab-dialog" id="help-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close help">×</button></form>
+    <p class="eyebrow">Workspace guide</p><h2>Controls & evidence rules</h2>
+    <div class="shortcut-grid"><kbd>Space</kbd><span>Play or pause</span><kbd>← →</kbd><span>Move one minute</span><kbd>Shift + ← →</kbd><span>Move fifteen minutes</span><kbd>R</kbd><span>Reset view</span><kbd>Esc</kbd><span>Cancel active tool</span></div>
+    <p>Verified keyframes remain locked. Duplicate the evidence baseline before testing changes. A warning reports a conflict; it never silently changes the reconstruction.</p>
+  </dialog>
+  <dialog class="lab-dialog" id="add-object-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close object palette">×</button></form>
+    <p class="eyebrow">Object palette</p><h2>Add an unplaced object</h2><div id="object-palette" class="object-palette"></div>
+  </dialog>
+  <dialog class="lab-dialog" id="rename-dialog">
+    <form id="rename-form">
+      <button class="dialog-close" type="button" data-close-rename aria-label="Close rename dialog">×</button>
+      <p class="eyebrow">Scenario metadata</p>
+      <h2>Rename scenario</h2>
+      <label class="field">Scenario name<input id="rename-input" type="text" maxlength="120" required></label>
+      <div class="dialog-actions"><button class="button button-quiet" type="button" data-close-rename>Cancel</button><button class="button button-primary" type="submit">Save name</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="lab-status" role="status" aria-live="polite"></div>
+
+  <script src="./assets/reconstruction-lab-data.js?v=20260907a"></script>
+  <script>
+    document.documentElement.dataset.labBoot = 'pending';
+    window.addEventListener('error', function (event) {
+      if (document.documentElement.dataset.labReady === 'true') return;
+      document.documentElement.dataset.labError = event.message || 'The reconstruction module could not start.';
+      var loading = document.getElementById('viewport-loading');
+      var fallback = document.getElementById('webgl-fallback');
+      if (loading) loading.classList.add('is-hidden');
+      if (fallback) fallback.hidden = false;
+    });
+    window.addEventListener('unhandledrejection', function (event) {
+      if (document.documentElement.dataset.labReady === 'true') return;
+      document.documentElement.dataset.labError = event.reason && event.reason.message ? event.reason.message : 'The reconstruction module could not start.';
+    });
+  </script>
+  <script type="module" src="./assets/reconstruction-lab.js?v=20260908a"></script>
+</body>
+</html>

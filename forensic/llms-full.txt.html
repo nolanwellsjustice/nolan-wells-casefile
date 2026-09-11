@@ -1,0 +1,162 @@
+# Nolan Wells Evidence File — Extended Guide
+
+Canonical site: https://justicefornolanwells.com/
+Repository: https://github.com/brandonhenry/NolanWellsCaseFile
+Last reviewed: 2026-09-09
+Coverage: Core events July 3–6, 2026, with source-provenance and research-audit records through September 9, 2026; Horn Island and Ocean Springs, Mississippi
+
+## Scope and independence
+
+The Nolan Wells Evidence File is an independent public evidence archive. It is not an official investigative record and is not affiliated with Nolan Wells’s family, attorneys, witnesses, law enforcement, the Mississippi Department of Marine Resources, the U.S. Coast Guard, Sea Tow, or any cited news organization.
+
+The archive’s purpose is to make the public record easier to inspect while keeping facts, reported recollections, media-derived claims, unknowns, and interpretation visibly separate.
+
+## Witness Claim Ledger
+
+The [Witness Claim Ledger](https://justicefornolanwells.com/witness-claims) converts the working witness-evidence matrix into 208 searchable entries across 23 named people or attributed accounts. Each card keeps the proposition, source-of-knowledge, support wording, assessment, topic, and available source link separate. Prose-only witness sections are represented as individual claim cards, while the complete matrix remains available as a formatted context view. Small communication-chain details are retained atomically; for example, Tracestin’s transcript account is separated into the call to another friend’s phone, the phone being on speakerphone, the group being together, the conversation with Warren through that device, and Warren ending the call to dial the Coast Guard. The ledger measures support for propositions, not honesty, guilt, or criminal responsibility.
+
+## Horn Island Reconstruction Lab
+
+The [Horn Island Reconstruction Lab](https://justicefornolanwells.com/reconstruction-lab) is a browser-local analytical workspace, not an official reconstruction. It uses a compact derivative of the 2021 USACE NCMP Mississippi topobathymetric DEM in EPSG:6345 and NAVD88/Geoid12b, with separately colored historical NOAA/NCEI bathymetry used only where the 2021 surface has no data. Remaining gaps stay explicit. The lab preserves source classification separately from placement certainty; verified measurements, strongly constrained placements, approximate placements, scenario assumptions, and computed conflicts are visually distinct.
+
+The immutable evidence baseline and editable working scenarios include only explicit keyframes. MI1295CB/Tideline waypoints are never converted into a continuous track. GPS establishes vessel movement rather than passenger identity. Camera matching is manual, environmental readings are labeled regional context, and JSON exports omit locally attached media bytes.
+
+## Horn Island Drift Lab
+
+The [Horn Island Drift Lab](https://justicefornolanwells.com/drift-lab) is a browser-local Monte Carlo screening model. It begins at the provided recovery coordinate (30.242561, -88.778612) and samples recovery-coordinate and recovery-time uncertainty before backtracking particle origins through July 6, July 5, and July 4. A contemporaneous WLOX report quoting Sheriff John Ledbetter says a park ranger found the body in the water near the northwest end around 8:45 AM; the coordinate was separately provided as the shore location. Without the ranger report, the exact first-discovery coordinate and any recovery-stage movement remain unresolved. Users therefore choose coordinate-only, stranded-on-shore, or still-in-water recovery criteria. Each particle samples space/time-varying current and wind, wave sensitivity, horizontal diffusion, leeway, floating or submerged state, bottom influence, shoreline contact, and possible decomposition-related refloating.
+
+The same engine independently propagates particles forward from every checked candidate entry. Its 40-option library is organized into source-linked anchors, an 11-point west-tip time sweep, a 10-point 4:30 PM direction/distance sweep, and 13 later-entry alternatives through July 6. Seven core comparisons are selected initially so the page remains responsive; an entire group or all 40 tests can be selected at once. Default forcing includes 43 hourly spatial NOAA NGOFS2 surface-current fields, NGOFS2 wind with an optional Dauphin Island observed-vector correction, NDBC 42067 observed wave height, Pascagoula observed NAVD88 water level and water temperature as spatial proxies, and 2021 USACE topobathymetry for shoreline contact. Horn Island Pass `ps0201`, Ship Island `gp0101`, and `MOB1105` harmonic current predictions are retained as point cross-checks, not substituted for the spatial field. The displayed percentage is the fraction ending inside the selected recovery criterion; later-entry tests are labeled as shorter-window diagnostics because their percentages are not directly comparable to July 4 entries. The model is not SAROPS, a medical conclusion, or a validated expert opinion, and the supplied coordinate still does not resolve the sequence of discovery, wash-up, or movement during recovery.
+
+The body-state ensemble uses a deliberately wide 65–150 accumulated-degree-day decomposition/refloat bracket around the limited two-case forensic literature. At the observed Pascagoula proxy temperature of roughly 30°C, that corresponds to approximately 52–120 hours. It therefore generally falls after the 41.75-hour July 4, 3:00 PM to July 6 recovery interval; sink/refloat particles mostly remain submerged or bottom-influenced during that window. This is an explicit sensitivity limit rather than case-specific biological validation.
+
+## Evidence vocabulary
+
+The [Dispatch Audio Timeline](https://justicefornolanwells.com/dispatch-audio) is a separate source-review layer produced after a complete automated transcription pass across the 115-file July 4–6, 2026 Jackson County Public Safety and MSWIN scanner archive. Its timestamps are derived from archive file-name starts plus audible segment offsets, not agency CAD clocks. The feed combines multiple agencies, so no transmission is attributed to JCSO or another department unless the audio establishes it. Clips never autoplay, unclear words remain bracketed, and the machine-readable ledger preserves original and derivative SHA-256 checksums.
+
+- Verified: Supported by an obtained official record, official audio, authenticated primary media, or another direct authoritative source.
+- Firsthand witness: A named person’s account of what that person says they personally saw or heard.
+- Secondhand: A person or publication relaying somebody else’s account.
+- Media record: A public image, audio file, or video whose visible or audible content is available but whose original metadata may be incomplete.
+- Unknown: A documented gap the available public evidence does not resolve.
+- Hypothesis: An interpretation or reconstruction that is not itself a verified event.
+
+Confidence is separately labeled High, Medium, or Low and includes a written reason.
+
+## Defensible public chronology
+
+- July 3, 2026: Nolan leaves home and stays with friends before the Horn Island trip. This is witness-based.
+- 9:56 AM, July 4, 2026: The GPS-tracked vessel MI4088BU leaves the mainland. This is an official GPS milestone summarized by MDMR.
+- Around 11:00 AM: Tracestin Shepherd says Nolan called for help locating where to anchor. This is a firsthand public account with approximate timing.
+- 11:14 AM: MI4088BU arrives at Horn Island. This is an official GPS milestone summarized by MDMR.
+- Approximately 1:55 PM, counsel-attributed media time: A continuous panorama in Nancy Grace’s official July 29 episode visibly preserves a crowded shallow-water shoreline gathering and tied-boat area. An August 21 Taylor & Cox / Taylor Dykema letter publishes higher-resolution stills and states that its page 6 images show Nolan amidst the group at approximately 1:55 PM. Warren’s public account names the group’s tied-boat order as Tideline, Palm Beach, and Triton, while UCN comparison material separately identifies the Triton within the nearshore scene. The letter is advocacy and does not disclose the native phone file, timestamp metadata, photographer, original post, or basis for 1:55 PM; the time remains an attributed approximate placement rather than a verified device timestamp.
+- Early afternoon: Public accounts and a circulated photograph place Nolan socializing among the boats. The photograph’s precise capture time is not authenticated.
+- Around 3:00 PM: Warren says this was about the last time he personally saw Nolan. This is a firsthand recollection, not an authenticated timestamp.
+- Around 3:30 PM: Tracestin says he was involved in an altercation and was then forced back aboard his family’s separate boat. This is a firsthand recollection with approximate timing.
+- August 3 source material: Four Facebook-distributed images from a report add nearshore scene and boat-configuration context. Earlier versions of this archive treated the later Sea Tow coordinate as proof of movement before 4:31 PM. That inference is withdrawn because a reproduced phone record places the call at 4:48 PM, after MDMR’s movement marker.
+- Around 4:01 PM, reported: A circulated video records Tracestin yelling. The project has not obtained the original device file or authenticated native timestamp metadata.
+- Around 4:01 PM, witness interpretation: Ivy Elizabeth says the video was recorded after a fight, that DMR arrived shortly afterward, and that a background person only resembled Nolan; she explicitly says they were not 100% certain.
+- Around the same period: Witness accounts say Nolan remained on or near the island and chose not to leave with one group. Warren says his last personal sighting was around 3:00 PM, and the public record does not identify every direct listener to the later alleged refusal. A qualified secondhand Katie-related account says she heard friends call Nolan to board, said goodbye, and assumed he would leave with them; it does not verify a refusal.
+- 4:31 PM: MDMR’s summarized GPS chronology begins sustained northbound movement for MI4088BU. GPS does not establish who was aboard or who possessed Nolan’s phone.
+- 4:31–4:48 PM: The official movement has begun, but the exact tow-line attachment, emergency-discovery sequence, and vessel configuration remain unresolved.
+- 4:48 PM, displayed phone record: A distress call reports bilge-pump failure, water ingress, approximately seven people aboard, and 30°14.684′ N, 88°46.790′ W as the vessel’s current coordinate. The caller says the vessel is not aground and that private help has been arranged. The 4:48 time comes from a reproduced phone-log exhibit supplied by counsel; original Sea Tow and carrier metadata remain preferable.
+- August 29 public-source development: A complete 4:38 upload preserves Josh Gill saying he personally watched a separate video recorded during the Sea Tow call, that background conversation is audible, and that Tyler Cox possesses it. Gill presents law-enforcement possession as his belief rather than confirmed personal knowledge. He does not say in this upload that Nolan’s name or Nolan’s voice can be heard. The statement creates a specific evidence lead, but the claimed native video, recorder, metadata, and chain of custody are not included in the upload.
+- 4:31–5:24 PM: MDMR verifies approximately 2.75 miles of slow movement at 0.06–4.2 knots. Read with the 4:48 distress call and cancellation after private help was arranged, this most likely represents the private-assistance or tow phase. GPS alone does not prove a tow line, towing configuration, assisting vessel, or passenger transfers.
+- 3:00–7:00 PM, firsthand negative observation, Medium confidence: In a direct public Facebook photo post published July 5, Stephanie Adams says she sent Nolan’s mother an image of her exact location, remained at the marked north-side area from 3:00–7:00 PM, and saw nobody come down to or pass her party. The attached map screenshot displays a blue marker on Horn Island’s north side but no coordinates or native location metadata. This narrows one reported route and observation area; it does not prove Nolan was absent from Horn Island, unseen elsewhere, or unable to use another route. The phone-interface time of 5:46 is not an authenticated event timestamp.
+- 7:17 PM–9:00 PM, firsthand witness and photo record, Medium confidence: In a direct public Facebook photo post published July 5, Robbie Robertson says he photographed Horn Island’s west end at 7:17 PM, that his boat and three others were the only boats remaining, and that his party stayed until 9:00 PM. He says two people with his party walked around to the south side and back at about 7:30 PM without seeing Nolan. This supports reported visitor presence on Horn Island after 7:30 and a limited negative observation. It does not establish Nolan’s location or show that Nolan was alive after 4:31. The Facebook-served image has no exposed native EXIF metadata, so the event times remain photographer-reported.
+- By 7:30 PM, firsthand witness account, Medium confidence: Statements attributed to Katelynn Brochard say Nolan introduced himself to her husband, her group was parked directly beside Nolan’s group, and Nolan was not in sight in that adjacent area when her group left at 7:30. A public Allyson Lawrence post establishes that the first statement and attached scene photograph were circulating by July 5, 2026 at 3:28 PM; a July 6 Jessy Wessy post attachment preserves the complete exchange without the later video overlay. These dates establish public preservation, not the photograph’s capture time or a native comment export. A repeated clarification says an unresolved “they” left around 5. Figures 6B and 10 of the July 31 working report reuse the Brochard source material for a Palm Beach/Triton/Boat #3 comparison and a conditional negative-observation analysis. This strengthens the provenance and adjacency components within the Medium rating; it remains a local no-sight observation, not Nolan’s established location, a case-wide last sighting, or proof Brochard witnessed a fight or ride refusal.
+- 5:25 PM: MDMR’s chronology records normal-speed movement.
+- 5:44 PM: MDMR’s chronology records the tracked vessel back at the mainland. The site excludes an upstream 5:44 graphic whose vessel labeling has not been reconciled.
+- 5:52–6:06 PM: Official GPS records MI4088BU departing the dock east into Fort Bayou and returning to the dock. A later group interview appears to place a Fort Bayou drain-plug stop before reaching the dock; the objective sequence is dock, then Fort Bayou, then dock.
+- 11:07–11:35 PM, displayed records: A reproduced exhibit shows a five-minute call to Nolan’s mother at 11:07 PM, a 21-minute outgoing Coast Guard call at 11:13 PM, messages beginning at 11:15 PM, and another family call at 11:35 PM. These records establish displayed times and durations, not complete call contents.
+- 11:45:14–11:49 PM: MDMR creates missing-person CAD call 2607-0196 and records Christine’s report. The CAD disposition does not mean Nolan’s whereabouts had been resolved.
+- 12:25–1:00 AM, displayed records: The exhibit set shows an incoming Coast Guard call at 12:25 AM and another call to Nolan’s mother at 1:00 AM. Complete audio is not included.
+- 1:38 AM, July 5, 2026: MDMR records JCSO’s working explanation that Nolan stayed with an unknown woman and returned on another vessel, and records no perceived water-related exigency. This proves the early assessment existed, not that the alternate ride occurred.
+- 2:57 AM, displayed record: The exhibit set shows a 911 contact. Complete audio and agency disposition are not included.
+- 1:38 AM to dawn: The obtained MDMR narrative records no further action by that shift. This does not establish that family, volunteers, JCSO, the Coast Guard, or every other person took no action.
+- Around 6:00–8:00 AM: Family and private searchers reportedly reach Horn Island before or alongside the main MDMR operation. MDMR launches the Admiral Dewey around 8:00 AM.
+- 9:00–10:30 AM: Drone assistance is requested; three early launches fail because of software problems; additional support is requested.
+- 9:48:05 AM, archive-derived: A radio speaker tells boat units that Nolan’s arrival boat “left about 3” while the same sequence relays reported 4:00–4:30 PM sightings. Warren’s displayed July 4 text answer and MDMR’s initial intake apply 3:00 PM to when Nolan was last seen, not when the boat departed. MDMR’s later Garmin summary places sustained departure at 4:31 PM. The record therefore establishes a material information-chain discrepancy but does not identify who supplied or transformed the 3:00 PM departure statement, whether personnel relied on it, or whether it changed the search outcome.
+- 11:55 AM: MDMR follows up with Laney Naquin, who says she was on Petit Bois Island, not Horn Island, and had not seen Nolan in more than a year. The record does not establish that she was the earlier “unknown female.”
+- 12:26–12:31 PM: Coast Guard Sector Mobile receives JCSO’s assistance request and JCSO publishes a missing-person notice.
+- 12:40–1:52 PM: Two recorded drone flights cover limited 0.1-square-mile grids. The second ends after a heat-swollen battery separates. The flights do not establish that the entire island was visually cleared.
+- Around 4:30–4:50 PM: MDMR obtains consent to view MI4088BU’s Garmin and records the anchor coordinate. The narrative contact time and exact 4:50 device power-on are separate actions.
+- 5:54 PM through evening: A command post and sonar response operate; the sonar result is inconclusive and work ends because of adverse weather.
+- 6:00 PM, July 5, 2026: Ashton Beach Jennings submits a photograph to the family’s appeal with the caption “East Tip. July 4.” The post time is preserved, but the image’s capture time and metadata are not authenticated and the photograph does not identify Nolan.
+- 9:52 PM: MDMR emails the Coast Guard requesting SAR modeling data. Its 6:00 PM July 4 incident time is a modeling input, not a verified event time; “Heavy” under alcohol is an operational input, not toxicology. The particle graphic is a model, not Nolan’s observed path.
+- Just before 6:00 AM through before 8:00 AM, July 6, 2026: United Cajun Navy air and boat assets reportedly redeploy.
+- Around 8:45 AM: Authorities reportedly receive a call that an NPS ranger found Nolan near Horn Island’s northwest tip. This is a notification time and may not be the exact discovery minute.
+- 9:11:09–10:07:36 AM: MDMR creates assistance and deceased-person CAD calls. These are CAD creation times, not discovery times.
+- Just after 11:00 AM through before 1:00 PM: Nolan reaches the coroner and his family publicly confirms his death. Formal dental identification is reported on July 7, 2026.
+
+## Critical unresolved period
+
+The central unresolved window is approximately 3:45–4:31 PM on July 4, 2026. Public accounts place Nolan on or near the island during at least part of this period. The altercation, circulated video, witness departures, alleged boarding exchange, and the 4:31 vessel movement converge in this interval. The Sea Tow call is now displayed at 4:48 PM and is not part of that pre-departure overlap.
+
+Do not state that:
+
+- the video’s reported 4:01 PM time is authenticated by native metadata;
+- GPS proves Nolan was or was not aboard a vessel;
+- a continuous route exists for MI1295CB;
+- the fight, video, and alleged boarding exchange have a verified minute-by-minute order;
+- absence of an identifiable voice on an audio channel proves a person’s presence or absence.
+- the nearshore photographs and later coordinate records establish a measured route, distance, or time interval between them;
+- the August 3 UCN release proves an exact capture minute, a specific number or distance of pre-4:31 movements, GPS deletion, deception, or misconduct;
+- the UCN Exhibit A3 label “Warren on Palm Beach” independently identifies Warren or confirms he was aboard. The report describes it as a source annotation, not an independent facial identification; the submitter, annotator, date, and recognition basis remain undisclosed;
+- the Nancy Grace panorama alone authenticates its original capture time, independently identifies every visible vessel, or proves the named boats stayed continuously fixed at the shoreline from 11:14 AM until approximately 4:00 PM;
+- the Sea Tow coordinate and Garmin anchor reference are the exact same point;
+- the public packet proves the precise place or second a tow line was attached;
+- the nearshore media and 4:48 PM call coordinate prove any movement before 4:31 PM;
+- MDMR had the later-viewed Garmin coordinate before the July 5 drone flights or used it prospectively to plan them.
+
+## Key records
+
+- Master notes: https://justicefornolanwells.com/master-notes
+- Official MDMR packet: https://justicefornolanwells.com/documents/MDMR-MP2607-0016-report.pdf
+- PLUNDER source archive and file ledger: https://justicefornolanwells.com/plunder-archive
+- United Cajun Navy report evidence review: https://justicefornolanwells.com/ucn-report
+- Body recovery chronology and recovery-location source footage: https://justicefornolanwells.com/body-recovery
+- 3:00 PM information-chain, missing-91-minutes, altercation/observation-gap, Apple Maps/Garmin, slow-movement, and search-impact review: https://justicefornolanwells.com/three-pm-search-relay
+- Preserved 22-page geospatial timeline and vessel-movement analysis: https://justicefornolanwells.com/documents/tmz/nolan-wells-geospatial-timeline-vessel-movement-analysis-2026-07-31.pdf
+- Nancy Grace panorama excerpt and source limits: https://justicefornolanwells.com/ucn-report#nancy-grace-panorama
+- Redacted MI4088BU GPS extraction summary: https://justicefornolanwells.com/documents/plunder/MI4088BU-GPS-Extraction-Summary-Redacted.pdf
+- MDMR email requesting USCG SAR data: https://justicefornolanwells.com/documents/plunder/MP2607-0016-MDMR-to-USCG-SAR-Email.pdf
+- J. Strickland supplemental report: https://justicefornolanwells.com/documents/plunder/MP2607-0016-Strickland-Supplement.pdf
+- USCG particle-drift graphic: https://justicefornolanwells.com/media/plunder/USCG-Particle-Drift.png
+- Drone search grid: https://justicefornolanwells.com/media/plunder/Drone-Search-Grid.jpg
+- Event log: https://justicefornolanwells.com/event-timeline
+- Witness Claim Ledger: https://justicefornolanwells.com/witness-claims
+- Sea Tow call transcript and channel analysis: https://justicefornolanwells.com/transcripts/seatow-audio.html
+- Josh Gill statement about a claimed second Sea Tow recording, complete video and time-coded content log: https://justicefornolanwells.com/transcripts/josh-gill-sea-tow-video
+- Warren interview transcripts: https://justicefornolanwells.com/transcripts/warren-part-1.html
+- Tracestin interview transcript: https://justicefornolanwells.com/transcripts/tracestin-part-5.html
+- Missing evidence tracker: https://justicefornolanwells.com/evidence-tracker
+- Contradictions comparison: https://justicefornolanwells.com/contradictions
+- Last Contact Matrix: https://justicefornolanwells.com/last-contact
+- Coordinate Explorer: https://justicefornolanwells.com/coordinates
+- People and entity graph: https://justicefornolanwells.com/people
+- Social source ledger: https://justicefornolanwells.com/social-source-ledger
+- Machine-readable social ledger: https://justicefornolanwells.com/documents/social-comment-ledger.json
+- Facebook research audit: https://justicefornolanwells.com/facebook-research-audit
+- Video archive: https://justicefornolanwells.com/videos
+- Machine-readable Facebook research findings: https://justicefornolanwells.com/documents/facebook-research-audit.json
+- Methodology and corrections: https://justicefornolanwells.com/about
+
+The social-source audit covers exposed comments and selected reply threads on six public Facebook sources: Christine Wonsley’s appeal (566 loaded top-level blocks), United Cajun Navy (2,253 exposed of 2,569 displayed), Will Polston (586 exposed of 856 displayed; 20 photo URLs reviewed), SMCC Athletics (10 exposed), Anna C. Moore’s clarification (10 exposed plus selected replies), and the Nicol.Everything Katelynn Brochard repost (62 exposed comment/reply articles of 68 displayed after selecting All comments and expanding every visible reply set). It also separately preserves selected public-post and screenshot source sets whose full comment trees were not audited. Christine Wonsley’s original July 5 public-group appeal records a family-reported 3:00 PM west-tip, north-side last-seen account, the family’s then-belief that Nolan had not left Horn Island, and her statement that JCSO, MDMR, and the Coast Guard had been contacted. The earliest exposed comment is stamped 12:40 AM, establishing that the appeal was public by then; Facebook did not expose the post’s exact publication time, the underlying sighting source, or the agencies’ receipt times. Four screenshots attributed to Katie Hudson Seymour contain a low-confidence “at five” boarding-request claim that does not override MI4088BU’s verified 4:31 PM GPS movement. Five attachments in a Natalya King post preserve an alleged first-person account and a message marked July 7 at 1:08 AM. That message records an intention to report alleged witness information and footage; future-tense wording does not prove that police received either. The displayed account owner, participants, delivery, underlying allegations, footage, and agency receipt remain unauthenticated. A July 10 Tiffani Riley post preserves a screenshot attributed to Danny Jones describing a July 4 family party beside three tied boats, large groups, drinking, and littering; it supplies no event time, named vessels, or sighting of Nolan, and the native Jones post remains unrecovered. A direct July 5 Stephanie Adams post reports that nobody came down to or passed her marked north-side area from 3:00–7:00 PM; the map screenshot supplies no coordinates or native location history, so this remains a route-limited negative observation rather than Nolan’s established location or island-wide absence. The ledger also preserves the Lucas Aviz and Stephen Ray screenshot leads; Anna Moore’s direct correction; Ivy Elizabeth’s direct video account; the July 5 first-statement preservation and July 6 complete-exchange image attachment for Katelynn Brochard, a direct July 7 reply, four derivative-repost images, the Callie Strong clarification attachment, and the Figures 6B/10 working-report comparison; search-participation comments; and the Matthew Lamp source chain. The Katelynn materials support the statements attributed to her but do not supply native comment exports or authenticated image metadata. No direct video file was exposed in the Nicol.Everything comment tree. Direct July 2026 JCSO and Mississippi NAACP Facebook post permalinks were not recovered, so those original comment trees were not audited. Unrelated images, altered accusation graphics, prayers, questions, unsupported theories, blame, and unauthenticated visual guesses are omitted.
+
+The people and entity graph is a visual index of claim-level source relationships, not a complete social network. A line does not prove friendship, family relationship, attendance, responsibility, or wrongdoing beyond the narrow label and source shown. Private relatives, scraped friend lists, mutual connections, and inferred attendance are excluded.
+
+A separate, collapsed Facebook context layer records eight case-relevant profiles visibly listed on Jack Jordan’s friends page when checked on July 30, 2026: Christine Wonsley, Tracestin Shepherd, Nolan Wells, Katie McCormack, Warren Hudson, Wyatt Pyron, Bart Edmiston, and Morgan Seymour. This is a hub-and-spoke platform listing through Jack—not evidence that those eight people are mutually connected, attended Horn Island, or share knowledge or responsibility. Names supported only by the friend list and not by a separate case-relevant public source are not published.
+
+Atlanta Black Star separately identifies Morgan Seymour among Nolan Wells’s friends and says its reporter sought comment from him. That report does not establish that Seymour was aboard a July 4 vessel or present at Horn Island. Until a direct passenger record, authenticated photograph identification, official statement, or firsthand account supplies that link, the archive treats Seymour’s attendance as unresolved.
+
+Anna C. Moore’s direct July 7 clarification is controlling for what she personally claimed: she says she never saw Nolan and never said the argument heard in the video involved him. Her post says a friend prompted her to review Snapchat footage and that she sent it to authorities and Nolan’s mother before public posting. This does not authenticate the reported 4:01 PM capture time or establish that Nolan appears.
+
+## Citation policy
+
+Prefer the underlying official document, transcript, or original publication when available. If citing the site’s synthesis, link to the narrowest relevant event or document record. Preserve qualifiers such as “approximately,” “reported,” “witness account,” and “not independently authenticated.”
+
+The Git history is public and provides a revision trail:
+https://github.com/brandonhenry/NolanWellsCaseFile/commits/main/
+
+Corrections may be submitted through the repository issue tracker:
+https://github.com/brandonhenry/NolanWellsCaseFile/issues

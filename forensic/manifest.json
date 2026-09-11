@@ -1,0 +1,68 @@
+{
+  "/": {
+    "url": "https://justicefornolanwells.com/",
+    "status": "OK",
+    "length": 7908,
+    "sha256": "9f6622a7a295018cb8973f77c001a1797be64755b63daebbde7bb85aa0bfff13"
+  },
+  "/case-summary": {
+    "url": "https://justicefornolanwells.com/case-summary",
+    "status": "OK",
+    "length": 15720,
+    "sha256": "0ea8876db0b29346008ce27d73d1cec017ad7539e282a570c5ff479f2390e3b5"
+  },
+  "/reconstruction-lab": {
+    "url": "https://justicefornolanwells.com/reconstruction-lab",
+    "status": "OK",
+    "length": 13632,
+    "sha256": "b40b68ed6ac6552dd20cc804010a68930b9333d06adde3a5de511336b225a6ee"
+  },
+  "/drift-lab": {
+    "url": "https://justicefornolanwells.com/drift-lab",
+    "status": "OK",
+    "length": 22097,
+    "sha256": "70fc28b507c3e6e52117a7b100098992b42f5219cb3e1d65a230e00ca57c02c2"
+  },
+  "/video-archive": {
+    "url": "https://justicefornolanwells.com/video-archive",
+    "status": "OK",
+    "length": 7381,
+    "sha256": "e13fec54bf942b000090abe68d897b09c5db30185a335aa21e9054abb9d73d3f"
+  },
+  "/social-source-ledger": {
+    "url": "https://justicefornolanwells.com/social-source-ledger",
+    "status": "OK",
+    "length": 63198,
+    "sha256": "875628e2204c05b51f75db047e2e83ce55da8c5875cc626c18919d4970878857"
+  },
+  "/facebook-research-audit": {
+    "url": "https://justicefornolanwells.com/facebook-research-audit",
+    "status": "OK",
+    "length": 19582,
+    "sha256": "186ed1f80933a17cb5aee247cca33b88674f1dc4d29e54ddd7541ad16122c76e"
+  },
+  "/contradictions": {
+    "url": "https://justicefornolanwells.com/contradictions",
+    "status": "OK",
+    "length": 1919,
+    "sha256": "36bc85bb7958556b6c03d51c6eda4503ef360aab39893f8e67402ed497d2dcd3"
+  },
+  "/boats": {
+    "url": "https://justicefornolanwells.com/boats",
+    "status": "OK",
+    "length": 1867,
+    "sha256": "d9cf93a9b563f0e5e077cd6c9310e197fadfa0a023ad5b20f1a6c72a37808a31"
+  },
+  "/llms.txt": {
+    "url": "https://justicefornolanwells.com/llms.txt",
+    "status": "OK",
+    "length": 10333,
+    "sha256": "96a9c47353949b5dac2b25550b9a8e48c24d697a5a00c12c965f9a7802ba8f24"
+  },
+  "/llms-full.txt": {
+    "url": "https://justicefornolanwells.com/llms-full.txt",
+    "status": "OK",
+    "length": 29496,
+    "sha256": "87e4354db06de40ee14fb54f27e86df3aa3bbfa970dd8a3cb6f2648a356fbde0"
+  }
+}

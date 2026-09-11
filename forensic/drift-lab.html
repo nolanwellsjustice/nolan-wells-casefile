@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-136ZM5M3LM"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-136ZM5M3LM');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="A browser-local Monte Carlo drift lab that backtracks from Nolan Wells's reported recovery area and tests proposed water-entry locations and times without selecting a preferred story.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#07100f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nolan Wells Evidence File">
+  <meta property="og:title" content="Drift Lab · Nolan Wells Evidence File">
+  <meta property="og:description" content="Reverse-drift origin clouds and side-by-side Monte Carlo tests of proposed water-entry locations and times near Horn Island.">
+  <meta property="og:url" content="https://justicefornolanwells.com/drift-lab">
+  <meta property="og:image" content="https://justicefornolanwells.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://justicefornolanwells.com/drift-lab">
+  <title>Drift Lab · Nolan Wells Evidence File</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://basemaps.cartocdn.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/drift-lab.css?v=20260908c">
+  <script src="./assets/seo.js?v=20260907b"></script>
+</head>
+<body data-page="drift-lab">
+  <a class="skip-link" href="#drift-workspace">Skip to drift results</a>
+  <div class="drift-shell">
+    <header class="drift-topbar">
+      <div class="brand-block">
+        <a aria-label='Return to evidence archive' class='back-link' href='/archive'>←</a>
+        <div>
+          <p class="eyebrow">Horn Island · July 4–6, 2026</p>
+          <h1>Drift Lab <span>Reverse + candidate testing</span></h1>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="model-chip"><i></i> Screening model</span>
+        <a class="quiet-link" href="#method">Method &amp; limits</a>
+      </div>
+    </header>
+
+    <main class="drift-workspace" id="drift-workspace">
+      <aside class="control-panel" aria-label="Drift model controls">
+        <div class="panel-scroll">
+          <section class="control-section anchor-section">
+            <p class="step-label"><span>1</span> Recovery anchor</p>
+            <div class="anchor-card">
+              <div><span>Reported time</span><strong>Jul 6 · 8:45 AM CDT</strong></div>
+              <div><span>Provided coordinate</span><strong>30.242561, −88.778612</strong></div>
+              <p>A contemporaneous report quoting the sheriff says a park ranger found the body in the water near the northwest end around 8:45 AM. This coordinate was separately provided as the shore location. Without the ranger report, the exact discovery point and any movement during recovery remain unresolved.</p>
+              <label class="anchor-choice">What should count as matching recovery?
+                <select id="recovery-hypothesis">
+                  <option value="coordinate">Coordinate region · shore or water</option>
+                  <option value="shore">Stranded on shoreline in region</option>
+                  <option value="water">Still in water in region</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading">
+              <div><p class="step-label"><span>2</span> Test set</p><h2>Compare every proposal</h2></div>
+              <button class="text-button" id="select-all-candidates" type="button">Select all</button>
+            </div>
+            <p class="section-copy"><strong id="selected-candidate-count">7 selected from 40 available</strong><br>Open a group and choose any combination. Every checked location and time gets the same uncertainty model.</p>
+            <div class="candidate-checklist" id="candidate-checklist">
+              <label class="candidate-check"><input type="checkbox" checked><span><strong>West-tip shoreline</strong><small>July 4 · 3:00 PM</small></span></label>
+              <label class="candidate-check"><input type="checkbox" checked><span><strong>West-tip shoreline</strong><small>July 4 · 4:00 PM</small></span></label>
+              <label class="candidate-check"><input type="checkbox" checked><span><strong>West-tip shoreline</strong><small>July 4 · 4:30 PM</small></span></label>
+              <label class="candidate-check"><input type="checkbox" checked><span><strong>Offshore test point</strong><small>July 4 · 4:30 PM</small></span></label>
+              <label class="candidate-check"><input type="checkbox" checked><span><strong>Sea Tow reference</strong><small>July 4 · 4:48 PM</small></span></label>
+            </div>
+            <button class="add-candidate" id="add-candidate" type="button">+ Add another place or time</button>
+          </section>
+
+          <section class="control-section">
+            <p class="step-label"><span>3</span> Assumption range</p>
+            <h2>How should state uncertainty be handled?</h2>
+            <div class="profile-picker" role="radiogroup" aria-label="Body-state assumption range">
+              <button class="profile-option is-active" type="button" role="radio" aria-checked="true" data-profile="broad"><strong>Broad ensemble</strong><small>Mix floating, submerged, intermittent and sink/refloat states</small></button>
+              <button class="profile-option" type="button" role="radio" aria-checked="false" data-profile="submerged"><strong>Mostly submerged</strong><small>Less wind and wave influence</small></button>
+              <button class="profile-option" type="button" role="radio" aria-checked="false" data-profile="surface"><strong>Mostly surface</strong><small>More wind and wave influence</small></button>
+            </div>
+          </section>
+
+          <section class="run-section">
+            <button class="run-button" id="run-model" type="button">Run selected scenarios <span>→</span></button>
+            <p id="run-size">6,000 reverse paths + 2,000 × 7 selected · 40 available</p>
+          </section>
+
+          <details class="advanced-panel">
+            <summary>Advanced settings</summary>
+            <div class="advanced-grid">
+              <label>Reverse particles<input id="reverse-particles" type="number" min="1000" max="12000" step="500" value="6000"></label>
+              <label>Per candidate<input id="forward-particles" type="number" min="500" max="6000" step="250" value="2000"></label>
+              <label>Recovery radius<input id="recovery-radius" type="number" min="100" max="1500" step="50" value="400"><span>meters</span></label>
+              <label>Random seed<input id="random-seed" type="number" step="1" value="20260704"></label>
+              <label>Wind field<select id="wind-source"><option value="corrected">NGOFS2 + Dauphin correction</option><option value="raw">Raw NGOFS2 wind</option></select></label>
+              <label>Shore behavior<select id="shoreline-mode"><option value="strand">Sticky stranding</option><option value="tidal-refloat">Tidal refloat sensitivity</option><option value="none">Ignore shoreline</option></select></label>
+            </div>
+            <p class="field-status" id="field-status">Loading archived NOAA fields…</p>
+            <button class="secondary-button" id="edit-forcing" type="button">Review fallback inputs</button>
+          </details>
+        </div>
+      </aside>
+
+      <section class="results-column" aria-label="Drift simulation map and results">
+        <div class="results-toolbar">
+          <div class="view-tabs" role="tablist" aria-label="Result view">
+            <button class="is-active" type="button" role="tab" aria-selected="true" data-view="reverse">Reverse origins</button>
+            <button type="button" role="tab" aria-selected="false" data-view="forward">Candidate tests</button>
+          </div>
+          <div class="map-legend" aria-label="Map legend">
+            <span><i class="legend-dot recovery"></i>Recovery</span>
+            <span><i class="legend-dot particle"></i>Simulated origins</span>
+            <span><i class="legend-dot candidate"></i>Test locations</span>
+          </div>
+        </div>
+
+        <div class="map-stage">
+          <div id="drift-map" aria-label="Interactive map of reverse-drift origins and proposed water-entry points">
+            <div class="map-placeholder">
+              <span></span>
+              <p>Preparing reverse-drift map…</p>
+            </div>
+          </div>
+          <div class="map-callout">
+            <p>Backtracked from recovery to</p>
+            <strong id="map-time-label">July 4 · 4:30 PM</strong>
+          </div>
+          <div class="run-state" id="run-state"><i></i><span>Ready to simulate</span></div>
+        </div>
+
+        <section class="time-scrubber" aria-label="Reverse-drift time">
+          <div class="scrubber-copy"><span>Jul 4</span><strong id="scrubber-date">4:30 PM</strong><span>Jul 6 · recovery</span></div>
+          <input id="reverse-time" type="range" min="0" max="12" step="1" value="2" aria-label="Backtrack time">
+          <div class="date-marks" aria-hidden="true"><i></i><i></i><i></i></div>
+        </section>
+
+        <section class="answer-grid" aria-label="Simulation summary">
+          <article class="answer-card primary-answer">
+            <p class="card-label">Inversion</p>
+            <h2>Where would entry have to occur?</h2>
+            <p id="inverse-summary">Run the model to generate a probability cloud backward from the recovery region through July 5 to July 4.</p>
+            <dl class="mini-metrics">
+              <div><dt>Cloud center</dt><dd id="origin-center">—</dd></div>
+              <div><dt>90% spread</dt><dd id="origin-spread">—</dd></div>
+              <div><dt>Nearest tested point</dt><dd id="origin-nearest">—</dd></div>
+            </dl>
+          </article>
+          <article class="answer-card">
+            <p class="card-label">Candidate comparison</p>
+            <h2>Which proposals survive the same test?</h2>
+            <p id="candidate-summary">Each proposed entry receives an independent forward ensemble. Results are percentages, not hand-drawn paths.</p>
+            <button class="inline-button" type="button" data-switch-view="forward">View all candidate rates →</button>
+          </article>
+        </section>
+
+        <section class="candidate-results" id="candidate-results" aria-labelledby="candidate-results-title">
+          <div class="results-heading">
+            <div><p class="card-label">Same model · same rules</p><h2 id="candidate-results-title">Proposed water-entry tests</h2></div>
+            <p>Percent ending inside the recovery region by 8:45 AM on July 6. If a sampled start is already inside that radius, the row is a retention test—not proof of travel.</p>
+          </div>
+          <div class="result-table-wrap">
+            <table>
+              <thead><tr><th>Proposal</th><th>Entry time</th><th>End in target</th><th>Median miss</th><th>Comparison context</th><th></th></tr></thead>
+              <tbody id="candidate-results-body">
+                <tr><td><strong>West-tip shoreline</strong></td><td>Jul 4 · 3:00 PM</td><td><span class="pending-value">Not run</span></td><td>—</td><td>41.8 h drift window</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="method-section" id="method">
+          <div><p class="card-label">Read before interpreting</p><h2>This is an ensemble screening tool—not SAROPS and not a finding.</h2></div>
+          <p>Thousands of particles vary recovery coordinates and time, hourly spatial current, wind, wave sensitivity, horizontal diffusion, leeway, buoyancy, submergence, and decomposition/refloat timing. The default current field now comes from archived NOAA NGOFS2 surface nowcasts; nearby observations constrain wind, water level, water temperature, and wave height. The result is materially better sourced, but it is still not a validated forensic-body or SAROPS product.</p>
+          <a href="./media/plunder/USCG-Particle-Drift.png">Open the released USCG particle-drift graphic →</a>
+        </section>
+
+        <section class="model-audit-section" aria-labelledby="model-audit-title">
+          <div class="audit-heading">
+            <div><p class="card-label">Model audit</p><h2 id="model-audit-title">What the computer is actually doing</h2></div>
+            <p>Everything runs locally in the browser. Repeating a seed reproduces the same ensemble.</p>
+          </div>
+          <div class="audit-grid">
+            <article>
+              <span>01</span>
+              <h3>Starts at recovery</h3>
+              <p>Reverse mode scatters particles inside the selected shore/water recovery hypothesis at 8:45 AM, then integrates the hourly spatial velocity field backward to the selected earlier time.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Samples state histories</h3>
+              <p>Each path can remain floating, stay submerged, alternate states, or sink and later refloat. Refloat timing is sampled in accumulated-degree-day ranges; submerged phases remove wind and wave leeway.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Tests claims forward</h3>
+              <p>Every checked proposal gets a separate particle ensemble. A success means the endpoint lies inside the same recovery region by the sampled recovery time.</p>
+            </article>
+          </div>
+          <div class="forcing-facts" id="forcing-facts" aria-live="polite">
+            <article><span>Spatial forcing</span><strong>Loading archived NOAA fields…</strong><small>Hourly July 4–6 data will be summarized here.</small></article>
+          </div>
+          <details class="audit-details">
+            <summary>Environmental input audit</summary>
+            <div class="audit-details-grid">
+              <div>
+                <h3>Bundled status</h3>
+                <dl>
+                  <div><dt>Recovery position</dt><dd>Provided shore coordinate · ± selected radius</dd></div>
+                  <div><dt>Recovery time</dt><dd>Reported 8:45 AM · ±20 min</dd></div>
+                  <div><dt>Surface current</dt><dd>43 hourly spatial NOAA NGOFS2 nowcasts</dd></div>
+                  <div><dt>Wind</dt><dd>NGOFS2 field · optional observed Dauphin vector correction</dd></div>
+                  <div><dt>Waves</dt><dd>NDBC 42067 observed height · direction/period sensitivity</dd></div>
+                  <div><dt>Water level / temperature</dt><dd>Pascagoula observed NAVD88 / °C proxies · level ±0.15 m</dd></div>
+                  <div><dt>Current cross-check</dt><dd>ps0201, gp0101 and MOB1105 harmonic predictions</dd></div>
+                  <div><dt>Horizontal diffusion</dt><dd>1.5 m²/s, state-scaled</dd></div>
+                  <div><dt>Leeway slope</dt><dd>0.0231 of wind · particle variation</dd></div>
+                  <div><dt>Refloat timing</dt><dd>Profile-dependent 65–150 accumulated degree-days</dd></div>
+                  <div><dt>Shoreline stranding</dt><dd>2021 5 m USACE west-tip / 45 m Horn grid · NGOFS2 triangle-domain mask outside</dd></div>
+                  <div><dt>Tidal-refloat option</dt><dd>Exploratory 12% per hour once water re-covers the contact cell</dd></div>
+                </dl>
+              </div>
+              <div>
+                <h3>Important mathematical limit</h3>
+                <p>Backward diffusion cannot literally undo an unknown forward path. The inverse cloud samples possible antecedent positions under a reversible-diffusion assumption while applying a forward-time buoyancy history. It should be read as a conditional sensitivity distribution, not a posterior probability of where entry occurred.</p>
+                <h3>Body-state limit</h3>
+                <p>A two-case forensic displacement study reported preliminary refloat observations around 95–117 accumulated degree-days. This lab deliberately widens that to 65–150 and converts it with the nearby Pascagoula water-temperature series (about 30°C during the window). That equals roughly 52–120 hours, so decomposition-driven refloat generally falls after the 41.75-hour July 4, 3:00 PM to recovery window. The sink/refloat particles therefore mostly act as submerged or bottom-influenced sensitivities here. This is not a validated prediction for this person, water, clothing, trauma, depth, or decomposition history.</p>
+                <h3>Needed for expert-grade use</h3>
+                <p>The ranger's authenticated first-discovery coordinate and recovery report; a west-tip wind station and directional wave spectrum; depth-resolved current fields; a July 2026 shoreline survey; empirical beaching/refloat parameters for a human body; and independent hindcast validation by a qualified oceanographer.</p>
+              </div>
+            </div>
+          </details>
+          <div class="source-links" aria-label="Model and evidence sources">
+            <a href="https://www.co-ops.nos.noaa.gov/ofs/ngofs2/ngofs2.html">NOAA NGOFS2 ↗</a>
+            <a href="https://noaa-nos-ofs-pds.s3.amazonaws.com/">NOAA OFS file archive ↗</a>
+            <a href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=currents_predictions&amp;application=NolanWellsDriftLab&amp;begin_date=20260704&amp;end_date=20260706&amp;station=ps0201&amp;bin=1&amp;time_zone=gmt&amp;units=metric&amp;interval=h&amp;format=json">Horn Island Pass current data ↗</a>
+            <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8735180">Dauphin Island observed wind ↗</a>
+            <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8741533">Pascagoula observed water level ↗</a>
+            <a href="https://www.ndbc.noaa.gov/data/stdmet/Jul/42067.txt">NDBC 42067 July observations ↗</a>
+            <a href="https://fenix.tecnico.ulisboa.pt/downloadFile/563568428827039/w2_read_01.pdf">Forensic displacement study ↗</a>
+            <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8742221">Horn Island tide station ↗</a>
+            <a href="https://www.dco.uscg.mil/Portals/9/CG-5R/MassRescueOps/CGADD%20COMDINST%2016130_2H.pdf">USCG SAR supplement ↗</a>
+            <a href="https://www.nzsar.govt.nz/assets/Downloadable-Files/NATSAR-2022-Leeway-Tables-Addendum.pdf">NZSAR leeway tables ↗</a>
+            <a href="./documents/plunder/MI4088BU-GPS-Extraction-Summary-Redacted.pdf#page=2">Triton GPS summary →</a>
+            <a href="https://www.wlox.com/2026/07/07/timeline-heres-what-we-know-about-disappearance-death-18-year-old-nolan-wells/">Reported in-water discovery ↗</a>
+            <a href='/body-recovery'>Recovery evidence record →</a>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="lab-dialog" id="candidate-dialog">
+    <form id="candidate-form">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+      <p class="eyebrow">Add a neutral test</p>
+      <h2>Test another place or time</h2>
+      <div class="dialog-grid">
+        <label>Name<input id="custom-name" type="text" value="Custom test point" maxlength="80" required></label>
+        <label>Entry time<input id="custom-time" type="datetime-local" value="2026-07-04T18:00" required></label>
+        <label>Latitude<input id="custom-lat" type="number" value="30.246000" step="0.000001" min="-90" max="90" required></label>
+        <label>Longitude<input id="custom-lon" type="number" value="-88.785000" step="0.000001" min="-180" max="180" required></label>
+      </div>
+      <p class="dialog-note">You can also click the map after choosing “Set by map.”</p>
+      <div class="dialog-actions"><button class="secondary-button" id="set-custom-on-map" type="button">Set by map</button><button class="run-button compact" type="submit">Add to test set</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="lab-dialog forcing-dialog" id="forcing-dialog">
+    <form id="forcing-form">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+      <p class="eyebrow">Environmental forcing</p>
+      <h2>Review the fallback envelope</h2>
+      <p class="dialog-note">This table is used only if the archived NOAA spatial bundle cannot load. Editing it does not override a successfully loaded NGOFS2 field and does not make a run validated.</p>
+      <label class="textarea-label">CSV · local time, wind kt/from °T, current kt/toward °T, wave drift kt/toward °T<textarea id="forcing-csv" rows="10" spellcheck="false"></textarea></label>
+      <div class="dialog-actions"><button class="secondary-button" id="reset-forcing" type="button">Restore defaults</button><button class="run-button compact" type="submit">Use these inputs</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="./assets/drift-lab-data.js?v=20260908c"></script>
+  <script type="module" src="./assets/drift-lab.js?v=20260908c"></script>
+</body>
+</html>
