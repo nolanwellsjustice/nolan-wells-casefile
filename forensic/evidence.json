@@ -1,82 +1,59 @@
 {
-  "generated_at": "2026-07-04-forensic",
-  "total_videos": 8,
-  "videos": [
-    {
-      "id": "UbMeAXQd8og",
-      "title": "MDMR releases call audio from boat in Nolan Wells case",
-      "channel": "WLOX",
-      "url": "https://www.youtube.com/watch?v=UbMeAXQd8og",
-      "query_match": "MDMR audio",
-      "verified": true
-    },
-    {
-      "id": "BtiHh8SeAf0",
-      "title": "MDMR call audio - second release WLOX",
-      "channel": "WLOX",
-      "url": "https://www.youtube.com/watch?v=BtiHh8SeAf0",
-      "query_match": "MDMR dispatch",
-      "verified": true
-    },
-    {
-      "id": "OfficerTatumSearch",
-      "title": "Officer Tatum Interviews Warren Hudson Part 1-3 - Best Friend Interview",
-      "channel": "The Officer Tatum",
-      "url": "https://www.youtube.com/results?search_query=Officer+Tatum+Nolan+Wells+Warren+Hudson",
-      "query_match": "Officer Tatum Nolan Wells",
-      "verified": true,
-      "note": "Published July 23-25, multiple parts on YouTube channel The Officer Tatum"
-    },
-    {
-      "id": "TracestinShepherd",
-      "title": "Tracestin Shepherd Officer Tatum Interview July 25",
-      "channel": "The Officer Tatum",
-      "url": "https://www.youtube.com/results?search_query=Officer+Tatum+Tracestin+Shepherd",
-      "query_match": "Nolan Wells friend interview",
-      "verified": true
-    },
-    {
-      "id": "WLOXSearch",
-      "title": "WLOX News - Body found on Horn Island / Timeline / Funeral",
-      "channel": "WLOX",
-      "url": "https://www.youtube.com/@WLOXNewsNow/search?query=Nolan%20Wells",
-      "query_match": "WLOX Nolan Wells",
-      "verified": true
-    },
-    {
-      "id": "WXXVSearch",
-      "title": "WXXV News 25 - Sheriff Ledbetter 'hard work' interview",
-      "channel": "WXXV",
-      "url": "https://www.youtube.com/results?search_query=WXXV+Nolan+Wells",
-      "query_match": "WXXV Nolan Wells",
-      "verified": true
-    }
-  ],
+  "videos": [],
+  "total": 0,
+  "generated_at": "2026-09-11 00:12:45.733191",
   "verified": {
     "timeline": [
-      {"time": "11:14 AM July 4", "event": "GPS Arrival MI4088BU Horn Island west tip", "source": "GPS Log", "verified": true},
-      {"time": "11:30:33 AM", "event": "Alternate Ride Request - JCSO dispatch to mainland launches - Negative at 12:21 PM", "source": "Dispatch Audio", "verified": true},
-      {"time": "~3:00 PM", "event": "Last seen talking to girl per sheriff", "source": "Sheriff statement via WXXV", "verified": false},
-      {"time": "4:31 PM", "event": "Vessel position change offshore", "source": "MDMR/GPS", "verified": true},
-      {"time": "4:48 PM", "event": "Sea Tow Distress Call - Triton sinking bilge pump failure - Jerry Atkerson", "source": "Sea Tow Audio + MDMR - WLOX obtained", "verified": true},
-      {"time": "5:52-6:06 PM", "event": "Fort Bayou Transit post-distress", "source": "GPS Track", "verified": true},
-      {"time": "11:00 PM", "event": "Friend reports missing to Coast Guard - Warren Hudson", "source": "Sheriff via ABC", "verified": true},
-      {"time": "Midnight July 5", "event": "Mother Christine Wonsley contacts JCSO", "source": "Sheriff", "verified": true},
-      {"time": "July 6 AM", "event": "Body recovered NW tip Horn Island - Coroner Bruce Lynd - WLOX", "source": "WLOX/Coroner", "verified": true}
+      {
+        "time": "11:14 AM July 4",
+        "event": "GPS Arrival MI4088BU Horn Island",
+        "verified": true
+      },
+      {
+        "time": "11:30 AM",
+        "event": "Alternate Ride Request \u2014 JCSO check \u2014 Negative",
+        "verified": true
+      },
+      {
+        "time": "4:31 PM",
+        "event": "Vessel Movement detected",
+        "verified": true
+      },
+      {
+        "time": "4:48 PM",
+        "event": "Sea Tow Distress \u2014 Jerry Atkerson \u2014 bilge pump failure",
+        "verified": true
+      },
+      {
+        "time": "5:52-6:06 PM",
+        "event": "Fort Bayou Transit",
+        "verified": true
+      }
     ],
     "contradictions": [
-      {"id": 1, "title": "Alternate Ride UNCONFIRMED", "detail": "Dispatch 11:30 AM negative 12:21 PM no vehicle ID. Contradicts pre-arranged alternate pickup theory.", "sources": ["Dispatch Audio", "WLOX emergency call"]},
-      {"id": 2, "title": "1:55 PM Scene Timing", "detail": "Counsel letter cites 1:55 PM three-boat cluster. No native EXIF metadata. 2hr41min gap vs 11:14 arrival.", "sources": ["Counsel letter", "GPS"]},
-      {"id": 3, "title": "Vessel Position Fixed vs Movement", "detail": "Claimed fixed until 4 PM. GPS shows 4:31 PM offshore movement.", "sources": ["Initial statement", "GPS/MDMR"]},
-      {"id": 4, "title": "Best Friend Claim Disputed", "detail": "Warren Hudson told Officer Tatum best friend. Family says don't recognize as best friend. Multiple parts July 23-25.", "sources": ["Officer Tatum YouTube", "Katie Pavlich Tonight"]}
+      {
+        "id": 1,
+        "title": "Alternate Ride UNCONFIRMED",
+        "detail": "Dispatch 11:30 AM negative at 12:21 PM, no vehicle identified"
+      },
+      {
+        "id": 2,
+        "title": "1:55 PM Scene Timing",
+        "detail": "Counsel letter cites 1:55 PM three-boat cluster \u2014 no native timestamp metadata \u2014 conflicts with 11:14 arrival"
+      },
+      {
+        "id": 3,
+        "title": "Vessel Position Change",
+        "detail": "Claimed fixed until 4 PM \u2014 GPS shows movement 4:31 PM"
+      }
     ],
     "discrepancies": [
-      "Chain of Custody: No native photo/video metadata for 1:55 PM scene - investigators requested original unedited photos",
-      "Registration IDs: Boats in cluster (Triton) not independently verified",
-      "Communications: 4:48 PM Sea Tow call membership not confirmed - MDMR audio obtained by WLOX",
-      "Movement: 5:52-6:06 PM Fort Bayou not in initial account",
-      "Interview Completeness: Sheriff Ledbetter told WXXV 'It's gonna take a lot of hard work' - CNN reports unclear if all friends interviewed",
-      "MDMR Report: Official PDF pending - portal check via dmr.ms.gov"
+      "Chain of Custody: No native photo/video metadata for 1:55 PM scene",
+      "Registration IDs: Boats in cluster not independently verified",
+      "Communications: 4:48 PM Sea Tow call lacks membership confirmation",
+      "Movement: Fort Bayou 5:52-6:06 not in initial shoreline account",
+      "MDMR report: Awaiting official PDF export",
+      "Scanner audio: Dispatch + Sea Tow original files needed"
     ]
   }
 }
