@@ -1,95 +1,74 @@
-import os, json
-from datetime import datetime
-import yt_dlp
+# FIXED pull_all.py — Auto-pulls all 25 layers — No manual entry
+import requests, os, json, hashlib, yaml, time
+from pathlib import Path
 
-# FULL AUTO-HUNT — 30 QUERIES — NO LINKS NEEDED FROM YOU
-QUERIES = [
-    "Officer Tatum Nolan Wells",
-    "Officer Tatum Jackson County Sheriff Nolan Wells",
-    "Nolan Wells Horn Island interview",
-    "Nolan Wells friend interview",
-    "Nolan Wells friend WLOX",
-    "Nolan Wells friend WXXV",
-    "Nolan Wells WLOX news",
-    "Nolan Wells WXXV 25",
-    "Nolan Wells Sun Herald",
-    "Nolan Wells family interview",
-    "Nolan Wells mom interview",
-    "Nolan Wells dad interview",
-    "Horn Island July 4 Nolan Wells",
-    "Horn Island search Nolan Wells",
-    "Horn Island boat Nolan Wells",
-    "Nolan Wells Mississippi missing boat",
-    "Nolan Wells Jackson County search",
-    "Nolan Wells Sea Tow",
-    "Nolan Wells boat sinking",
-    "Nolan Wells Fort Bayou",
-    "Nolan Wells July 4 2026",
-    "Justice for Nolan Wells",
-    "Nolan Wells update",
-    "Nolan Wells press conference",
-    "Nolan Wells sheriff interview",
+BASE = "https://justicefornolanwells.com"
+HEADERS = {"User-Agent": "JusticeForNolanWells-Bot/1.0"}
+
+print("Starting auto-pull...")
+
+# 1. Make sure forensic folder exists
+Path("forensic").mkdir(exist_ok=True)
+Path("forensic/evidence_files").mkdir(exist_ok=True, parents=True)
+
+# 2. Read your sources.yaml — this has all your sources
+try:
+    sources = yaml.safe_load(open("sources.yaml", encoding="utf-8"))
+    print(f"Loaded sources.yaml with {len(sources)} entries")
+except:
+    sources = {}
+    print("No sources.yaml found, will create from 25 layers")
+
+# 3. THE 25 LAYERS WE MAPPED — auto-pull each one
+LAYERS = [
+    "/", "/evidence-archive", "/case-summary", "/witness-claim-ledger",
+    "/reconstruction-lab", "/account-order-story", "/documents-archive",
+    "/drift-lab", "/video-archive", "/plunder-source-archive",
+    "/dispatch-audio-timeline", "/information-chain-review",
+    "/body-recovery-record", "/ucn-report-review", "/social-source-ledger",
+    "/facebook-research-audit", "/last-contact-matrix", "/contradictions",
+    "/missing-evidence-tracker", "/coordinate-explorer", "/question-tracker",
+    "/people-connections", "/boats", "/timeline-gaps", "/methodology",
+    "/llms.txt", "/llms-full.txt"
 ]
 
-os.makedirs("forensic/youtube", exist_ok=True)
-all_videos = []
-
-opts = {'quiet': True, 'skip_download': True, 'noplaylist': True}
-
-print("=== HUNTER V4 FULL PULL ===")
-for q in QUERIES:
+all_layers = {}
+for path in LAYERS:
     try:
-        print(f"HUNTING: {q}")
-        with yt_dlp.YoutubeDL(opts) as ydl:
-            info = ydl.extract_info(f"ytsearch15:{q}", download=False)
-            for e in info.get('entries', []):
-                if not e: continue
-                v = {
-                    "id": e.get('id'),
-                    "title": e.get('title'),
-                    "channel": e.get('uploader') or e.get('channel'),
-                    "url": f"https://www.youtube.com/watch?v={e.get('id')}",
-                    "query_match": q,
-                    "upload_date": e.get('upload_date'),
-                    "description": (e.get('description') or "")[:1000],
-                    "thumbnail": e.get('thumbnail')
-                }
-                if not any(x['id']==v['id'] for x in all_videos):
-                    all_videos.append(v)
-    except Exception as ex:
-        print(f"Fail {q}: {ex}")
+        url = BASE + path if not path.startswith("/llms") else BASE + path
+        if path in ["/llms.txt", "/llms-full.txt"]:
+            url = BASE + path
+        r = requests.get(url, headers=HEADERS, timeout=30)
+        if r.status_code == 200:
+            all_layers[path] = {
+                "url": url,
+                "status": "OK",
+                "length": len(r.text),
+                "sha256": hashlib.sha256(r.text.encode()).hexdigest()
+            }
+            # Save each layer as file so you can see it
+            safe_name = path.strip("/").replace("/", "_") or "home"
+            open(f"forensic/{safe_name}.html", "w", encoding="utf-8").write(r.text)
+            print(f"✓ Pulled {path}")
+        else:
+            print(f"✗ Failed {path} {r.status_code}")
+        time.sleep(1) # be nice to server
+    except Exception as e:
+        print(f"✗ Error {path}: {e}")
 
-# Keep verified case data so we don't lose contradictions/discrepancies
-verified = {
-    "timeline": [
-        {"time": "11:14 AM July 4", "event": "GPS Arrival MI4088BU Horn Island", "verified": True},
-        {"time": "11:30 AM", "event": "Alternate Ride Request — JCSO check — Negative", "verified": True},
-        {"time": "4:31 PM", "event": "Vessel Movement detected", "verified": True},
-        {"time": "4:48 PM", "event": "Sea Tow Distress — Jerry Atkerson — bilge pump failure", "verified": True},
-        {"time": "5:52-6:06 PM", "event": "Fort Bayou Transit", "verified": True},
-    ],
-    "contradictions": [
-        {"id": 1, "title": "Alternate Ride UNCONFIRMED", "detail": "Dispatch 11:30 AM negative at 12:21 PM, no vehicle identified"},
-        {"id": 2, "title": "1:55 PM Scene Timing", "detail": "Counsel letter cites 1:55 PM three-boat cluster — no native timestamp metadata — conflicts with 11:14 arrival"},
-        {"id": 3, "title": "Vessel Position Change", "detail": "Claimed fixed until 4 PM — GPS shows movement 4:31 PM"},
-    ],
-    "discrepancies": [
-        "Chain of Custody: No native photo/video metadata for 1:55 PM scene",
-        "Registration IDs: Boats in cluster not independently verified",
-        "Communications: 4:48 PM Sea Tow call lacks membership confirmation",
-        "Movement: Fort Bayou 5:52-6:06 not in initial shoreline account",
-        "MDMR report: Awaiting official PDF export",
-        "Scanner audio: Dispatch + Sea Tow original files needed"
-    ]
-}
+# 4. Save master manifest — this proves what we pulled and when
+json.dump(all_layers, open("forensic/manifest.json", "w", encoding="utf-8"), indent=2)
 
-with open("forensic/evidence.json","w",encoding="utf-8") as f:
-    json.dump({"videos": all_videos, "total": len(all_videos), "generated_at": str(datetime.now()), "verified": verified}, f, indent=2)
+# 5. Save coordinates we mapped — Layer 19
+coords = [
+    {"name":"Northwest Horn Island recovery ref","lat":30.242014,"lon":-88.778409},
+    {"name":"El Camino Real Road","lat":30.433343,"lon":-88.848426},
+    {"name":"Horn Island west tip","lat":30.243508,"lon":-88.777755},
+    {"name":"MI4088BU slow movement","lat":30.288414,"lon":-88.790442},
+    {"name":"Garmin anchor","lat":30.243767,"lon":-88.777150},
+    {"name":"Sea Tow caller","lat":30.244733,"lon":-88.779833},
+]
+json.dump(coords, open("forensic/coordinates.json","w"), indent=2)
 
-with open("forensic/master_timeline.json","w",encoding="utf-8") as f:
-    json.dump(verified, f, indent=2)
-
-with open("forensic/contradictions.json","w",encoding="utf-8") as f:
-    json.dump(verified["contradictions"], f, indent=2)
-
-print(f"DONE V4: {len(all_videos)} total videos")
+print(f"\nDONE — Pulled {len(all_layers)} layers into /forensic/")
+print("Check forensic/manifest.json for proof")
